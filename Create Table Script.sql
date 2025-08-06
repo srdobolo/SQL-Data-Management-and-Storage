@@ -1,5 +1,5 @@
 CREATE TABLE Clientes (
-    id_cliente VARCHAR PRIMARY KEY,
+    id_cliente VARCHAR (6) PRIMARY KEY,
     nome VARCHAR NOT NULL,
     nif INTEGER UNIQUE NOT NULL CHECK (
     	nif BETWEEN 100000000 AND 999999999
@@ -10,7 +10,7 @@ CREATE TABLE Clientes (
     nr_telemovel TEXT UNIQUE NOT NULL CHECK (
         nr_telemovel LIKE '9[1236][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
 	),
-    data_nascimento TEXT CHECK (
+    data_nascimento DATE CHECK (
     	LENGTH(data_nascimento) = 10 AND
     	data_nascimento LIKE '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
 	), -- formato: 'YYYY-MM-DD'
