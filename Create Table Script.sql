@@ -8,11 +8,11 @@ CREATE TABLE Clientes (
     	email LIKE '%@%.%'
     	),
     nr_telemovel TEXT UNIQUE NOT NULL CHECK (
-    	nr_telemovel GLOB '9[1236][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+        nr_telemovel LIKE '9[1236][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
 	),
     data_nascimento TEXT CHECK (
     	LENGTH(data_nascimento) = 10 AND
-    	data_nascimento GLOB '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
+    	data_nascimento LIKE '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
 	), -- formato: 'YYYY-MM-DD'
     volume_medio_consumo REAL,
     ultima_compra VARCHAR CHECK (
@@ -110,28 +110,28 @@ CREATE TABLE Funcionarios (
         email LIKE '%@%.%'
     ),
     nr_telemovel TEXT UNIQUE NOT NULL CHECK (
-        nr_telemovel GLOB '9[1236][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+        nr_telemovel LIKE '9[1236][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
     ),
     data_nascimento TEXT CHECK (
         LENGTH(data_nascimento) = 10 AND
-        data_nascimento GLOB '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
+        data_nascimento LIKE '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
     ),
     doc_identificacao TEXT NOT NULL CHECK (
         LENGTH(doc_identificacao) = 13 AND
-        doc_identificacao GLOB '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
+        doc_identificacao LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
     ),
     morada TEXT,
     iban TEXT NOT NULL CHECK (
         LENGTH(iban) = 25 AND
-        iban GLOB 'PT[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+        iban LIKE 'PT[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
     ),
     funcao TEXT NOT NULL,
     data_modificacao TEXT CHECK (
         LENGTH(data_modificacao) = 10 AND
-        data_modificacao GLOB '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
+        data_modificacao LIKE '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
     ),
     data_criacao TEXT CHECK (
         LENGTH(data_criacao) = 10 AND
-        data_criacao GLOB '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
+        data_criacao LIKE '20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
     )
 );

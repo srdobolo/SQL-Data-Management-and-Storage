@@ -11,8 +11,6 @@ malta-brew-data-management/
 │   └── er-diagram.png
 ├── diagrams/
 └── src/
-```
-```img
-docs\c7b24502-d400-4153-9ce7-eb6fc51b8de1.png
-```
 
+```img
+docs\c7b24502-d400-4153-9ce7-eb6fc51b8de1.png```
