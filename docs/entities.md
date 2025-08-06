@@ -1,3 +1,12 @@
+# 🗃️ Entidades do Sistema - Malta Brew Taproom
+
+Este documento descreve as entidades principais do sistema e os seus respetivos atributos, com base no modelo relacional em SQLite.
+
+---
+
+## 📌 Cliente
+
+```sql
 Cliente(
   id_cliente INTEGER PRIMARY KEY, 
   nome TEXT, 
@@ -12,27 +21,31 @@ Cliente(
   ultima_compra DATE, 
   total_gasto REAL, 
   media_consumo_compra REAL, 
-  newsletter INTEGER,        -- 0/1 (BOOLEAN in SQLite)
+  newsletter INTEGER,        -- 0/1 (BOOLEAN em SQLite)
   canal_aquisicao TEXT, 
   data_modificacao DATE, 
   data_criacao DATE
 )
+```
+## 🎉 Evento
 
-Evento(
+```Evento(
   id_evento INTEGER PRIMARY KEY, 
   designacao TEXT, 
   descricao TEXT, 
   tipo_evento TEXT, 
   data DATE, 
-  hora TEXT,                -- SQLite has no TIME type, use TEXT (HH:MM:SS)
+  hora TEXT,                -- SQLite não tem tipo TIME. Use TEXT (HH:MM:SS)
   numero_inscritos INTEGER, 
-  evento_privado INTEGER,   -- 0/1 (BOOLEAN in SQLite)
+  evento_privado INTEGER,   -- 0/1 (BOOLEAN em SQLite)
   preco REAL, 
   data_modificacao DATE, 
   data_criacao DATE
 )
+```
+## 🍺 Produto
 
-Produto(
+```Produto(
   id_produto INTEGER PRIMARY KEY, 
   designacao TEXT, 
   descricao TEXT, 
@@ -47,8 +60,11 @@ Produto(
   data_modificacao DATE, 
   data_criacao DATE
 )
+```
 
-Fornecedor(
+## 🏭 Fornecedor
+
+```Fornecedor(
   id_fornecedor INTEGER PRIMARY KEY, 
   nome_empresa TEXT, 
   pessoa_contacto TEXT, 
@@ -62,8 +78,11 @@ Fornecedor(
   data_modificacao DATE, 
   data_criacao DATE
 )
+```
 
-Funcionario(
+## 👨‍🔧 Funcionário
+
+```Funcionario(
   id_funcionario INTEGER PRIMARY KEY, 
   nome TEXT, 
   nif TEXT, 
@@ -77,30 +96,23 @@ Funcionario(
   data_modificacao DATE, 
   data_criacao DATE
 )
+```
+## ⭐ Avaliação
 
-Economato(
-  id_item INTEGER PRIMARY KEY, 
-  nome_do_item TEXT, 
-  quantidade INTEGER, 
-  tipo TEXT, 
-  limite_minimo_stock INTEGER, 
-  id_fornecedor INTEGER, 
-  data_modificacao DATE, 
-  data_criacao DATE
-)
-
-Avaliacao(
+```Avaliacao(
   id_avaliacao INTEGER PRIMARY KEY, 
   score INTEGER, 
   data_avaliacao DATE, 
   comentario TEXT, 
-  visibilidade INTEGER,     -- 0/1 (BOOLEAN in SQLite)
+  visibilidade INTEGER,     -- 0/1 (BOOLEAN em SQLite)
   id_cliente INTEGER, 
   data_modificacao DATE, 
   data_criacao DATE
 )
+```
+## 💳 Pagamento
 
-Pagamento(
+```Pagamento(
   id_pagamento INTEGER PRIMARY KEY, 
   valor REAL, 
   moeda TEXT, 
@@ -110,13 +122,15 @@ Pagamento(
   estado_pagamento TEXT, 
   preco_compra REAL, 
   preco_venda REAL, 
-  fornecedor TEXT,          -- Use id_fornecedor INTEGER if relates to Fornecedor
-  imagem TEXT,              -- File path or filename
+  fornecedor TEXT,          -- Use id_fornecedor INTEGER se for relação direta
+  imagem TEXT,              -- Caminho do ficheiro ou nome do ficheiro
   id_cliente INTEGER, 
   data_criacao DATE
 )
+```
+## 📦 Encomenda
 
-Encomenda(
+```Encomenda(
   id_encomenda INTEGER PRIMARY KEY, 
   id_produto INTEGER, 
   id_fornecedor INTEGER, 
@@ -129,3 +143,7 @@ Encomenda(
   data_encomenda DATE, 
   data_prevista_entrega DATE
 )
+```
+
+
+
