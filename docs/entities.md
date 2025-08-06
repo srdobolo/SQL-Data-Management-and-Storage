@@ -29,7 +29,8 @@ Cliente(
 ```
 ## 🎉 Evento
 
-```Evento(
+```sql
+Evento(
   id_evento INTEGER PRIMARY KEY, 
   designacao TEXT, 
   descricao TEXT, 
@@ -45,7 +46,8 @@ Cliente(
 ```
 ## 🍺 Produto
 
-```Produto(
+```sql
+Produto(
   id_produto INTEGER PRIMARY KEY, 
   designacao TEXT, 
   descricao TEXT, 
@@ -64,7 +66,8 @@ Cliente(
 
 ## 🏭 Fornecedor
 
-```Fornecedor(
+```sql
+Fornecedor(
   id_fornecedor INTEGER PRIMARY KEY, 
   nome_empresa TEXT, 
   pessoa_contacto TEXT, 
@@ -82,7 +85,8 @@ Cliente(
 
 ## 👨‍🔧 Funcionário
 
-```Funcionario(
+```sql
+Funcionario(
   id_funcionario INTEGER PRIMARY KEY, 
   nome TEXT, 
   nif TEXT, 
@@ -99,7 +103,8 @@ Cliente(
 ```
 ## ⭐ Avaliação
 
-```Avaliacao(
+```sql
+Avaliacao(
   id_avaliacao INTEGER PRIMARY KEY, 
   score INTEGER, 
   data_avaliacao DATE, 
@@ -112,7 +117,8 @@ Cliente(
 ```
 ## 💳 Pagamento
 
-```Pagamento(
+```sql
+Pagamento(
   id_pagamento INTEGER PRIMARY KEY, 
   valor REAL, 
   moeda TEXT, 
@@ -130,7 +136,8 @@ Cliente(
 ```
 ## 📦 Encomenda
 
-```Encomenda(
+```sql
+Encomenda(
   id_encomenda INTEGER PRIMARY KEY, 
   id_produto INTEGER, 
   id_fornecedor INTEGER, 
