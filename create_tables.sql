@@ -8,18 +8,23 @@ CREATE TABLE Clientes (
         email LIKE '%@%.%'
     ),
     nr_telemovel VARCHAR(9) UNIQUE NOT NULL CHECK (
-        nr_telemovel LIKE '9[1236]%' AND LENGTH(nr_telemovel)=9
+         (nr_telemovel LIKE '91%') OR
+         (nr_telemovel LIKE '92%') OR
+         (nr_telemovel LIKE '93%') OR
+         (nr_telemovel LIKE '96%') AND 
+         LENGTH(nr_telemovel) = 9
     ),
-    data_nascimento DATE,
-    volume_medio_consumo DECIMAL(10,2),
-    ultima_compra DATE,
-    total_gasto DECIMAL(10,2),
-    media_consumo_compra DECIMAL(10,2),
+    data_nascimento DATE CHECK (
+    	data_nascimento <= CURRENT_DATE AND 
+    	data_nascimento LIKE '____-__-__'
+    	),
     newsletter BOOLEAN NOT NULL DEFAULT FALSE,
     autorizacao BOOLEAN NOT NULL DEFAULT FALSE,
-    canal_aquisicao VARCHAR(100),
-    data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    canal_aquisicao VARCHAR(100) CHECK (
+    	canal_aquisicao IN ('Instagram', 'Facebook', 'Tik Tok', 'Google', 'Eventos', 'TheFork', 'Email Marketing', 'Recomendação Amigo')
+    	),  
+    data_modificacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE Produtos (
     id_produto VARCHAR(6) PRIMARY KEY,
@@ -34,7 +39,7 @@ CREATE TABLE Produtos (
     stock_atual FLOAT NOT NULL,
     stock_minimo FLOAT NOT NULL,
     data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAM
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
 );
 CREATE TABLE Funcionarios (
