@@ -96,23 +96,27 @@ CREATE TABLE Avaliacao (
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
 );
 CREATE TABLE Eventos (
-    id_evento VARCHAR(6) PRIMARY KEY,
-    id_cliente VARCHAR(6),
-    designacao VARCHAR(100) NOT NULL,
-    descricao TEXT,
+    id_evento      VARCHAR(6) PRIMARY KEY,
+    designacao     VARCHAR(100) NOT NULL,
+    descricao      TEXT,
     tipo_de_evento VARCHAR(50) NOT NULL CHECK (
-        tipo_de_evento IN ('festa', 'workshop', 'lançamento', 'exposicoes')
+        tipo_de_evento IN ('festa', 'workshop', 'lançamento', 'outro')
     ),
-    data_evento DATE NOT NULL CHECK (
-        data_evento >= CURRENT_DATE
-    ),
-    hora_evento TIME NOT NULL,
-    localizacao VARCHAR(100),
-    capacidade INTEGER NOT NULL CHECK (capacidade > 0),
+    data_evento    DATE NOT NULL,
+    hora_evento    TIME NOT NULL,
+    localizacao    VARCHAR(100),
+    capacidade     INTEGER NOT NULL CHECK (capacidade > 0),
     evento_privado BOOLEAN NOT NULL DEFAULT FALSE,
-    preco DECIMAL(10,2) NOT NULL,    
+    preco          DECIMAL(10,2),
     data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_criacao     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE Participacoes_Evento (
+    id_evento   VARCHAR(6) NOT NULL,
+    id_cliente  VARCHAR(6) NOT NULL,
+    data_inscricao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_evento, id_cliente),
+    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
 );
 CREATE TABLE Pagamentos (
