@@ -27,6 +27,7 @@ Cliente(
   data_criacao DATE
 )
 ```
+
 ## 🎉 Evento
 
 ```sql
@@ -44,6 +45,7 @@ Evento(
   data_criacao DATE
 )
 ```
+
 ## 🍺 Produto
 
 ```sql
@@ -101,6 +103,7 @@ Funcionario(
   data_criacao DATE
 )
 ```
+
 ## ⭐ Avaliação
 
 ```sql
@@ -115,6 +118,7 @@ Avaliacao(
   data_criacao DATE
 )
 ```
+
 ## 💳 Pagamento
 
 ```sql
@@ -134,6 +138,7 @@ Pagamento(
   data_criacao DATE
 )
 ```
+
 ## 📦 Encomenda
 
 ```sql
@@ -151,6 +156,3 @@ Encomenda(
   data_prevista_entrega DATE
 )
 ```
-
-
-

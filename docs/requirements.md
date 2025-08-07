@@ -15,6 +15,7 @@ Este documento reúne os principais requisitos funcionais e não funcionais do s
 ## 2. Requisitos Funcionais
 
 ### 👤 Para o Cliente
+
 - RF01: Visitar e utilizar o espaço da taproom.
 - RF02: Consultar menu/portfólio através de app ou totem.
 - RF03: Comprar produtos (cervejas, snacks) via app/kiosk.
@@ -25,18 +26,21 @@ Este documento reúne os principais requisitos funcionais e não funcionais do s
 - RF08: Divulgar experiências nas redes sociais.
 
 ### 🚚 Para o Fornecedor
+
 - RF09: Fornecer produtos e materiais de economato.
 - RF10: Aceder ao portal do fornecedor.
 - RF11: Consultar e confirmar encomendas e entregas.
 - RF12: Emitir faturas e recibos.
 
 ### 👨‍🍳 Para o Funcionário
+
 - RF13: Garantir segurança e apoio aos clientes.
 - RF14: Repor economato e manter a limpeza conforme HACCP.
 - RF15: Tirar dúvidas dos clientes sobre equipamentos e processos.
 - RF16: Usar fardamento disponibilizado pela empresa.
 
 ### 🧑‍💼 Para a Gerência
+
 - RF17: Controlar o stock e prevenir ruturas de produtos.
 - RF18: Gerir fornecedores, pagamentos e custos.
 - RF19: Divulgar a marca/produto (marketing/parcerias).
@@ -44,16 +48,19 @@ Este documento reúne os principais requisitos funcionais e não funcionais do s
 - RF21: Garantir conformidade com regras de higiene e segurança.
 
 ### 🧾 Para o Contabilista
+
 - RF22: Emitir recibos de pagamento de funcionários.
 - RF23: Fazer declarações fiscais (ex: IRC).
 - RF24: Gerir fluxo documental (faturas de fornecedores).
 - RF25: Garantir conformidade com a legislação fiscal.
 
 ### ⚖️ Para o Advogado
+
 - RF26: Redigir contratos de funcionários.
 - RF27: Aceder a documentos legais restritos.
 
 ### 🖥️ Para o Sistema
+
 - RF28: Permitir tradução automática de menus.
 - RF29: Oferecer diferentes níveis de acesso conforme perfil (permissões).
 - RF30: Integrar com sistemas/API dos fornecedores.
