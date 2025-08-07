@@ -1,0 +1,8 @@
+INSERT INTO Funcionarios
+(id_funcionario, nome, doc_identificacao, nif, email, nr_telemovel, funcao, data_nascimento, morada, iban, data_modificacao, data_criacao) VALUES
+('F00001', 'Ricardo Figueiredo', '12345678 AB 5', 187654321, 'ricardo.figueiredo@empresa.pt', '913456789', 'multitasker',   '1989-06-16', 'Rua do Trabalho, 12, Porto', 'PT50000201234567890123456', '2024-07-04 15:03:26', '2024-03-18 11:27:01'),
+('F00002', 'Joana Santos',       '98765432 CD 0', 225678991, 'joana.santos@email.com',         '932145678', 'multitasker',   NULL,                       NULL,                         'PT50000298765432101234567', '2024-06-19 10:22:44', '2024-04-11 14:08:17'),
+('F00003', 'Carlos Louro',       '24681357 ZX 4', 193456172, 'carlos.louro@mail.pt',           '961234567', 'multitasker',   '1995-02-27', 'Av. Central, 82, Braga',     'PT50000324681357901357923', '2024-08-06 20:30:12', '2024-01-14 16:05:38'),
+('F00004', 'Andreia Silva',      '32165498 XY 7', 208654219, 'andreia.silva@icloud.com',       '936598741', 'segurança',     '1984-12-10', NULL,                         'PT50000532165498701478523', '2024-08-02 09:21:51', '2024-03-21 15:32:16'),
+('F00005', 'Mário Serafim',      '75395148 EF 2', 286380154, 'mario.serafim@empresa.org',      '926457138', 'segurança',     '1978-05-02', 'Av. das Flores, 206, Lisboa', 'PT50000775395148605896231', '2024-07-15 11:38:44', '2024-04-17 10:52:04'),
+('F00006', 'Tânia Costa',        '15935728 GH 9', 244578365, 'tania.costa@gmail.com',          '919284317', 'segurança',     NULL,                       NULL,                         'PT50000815935728404857362', '2024-06-06 17:20:23', '2024-02-08 13:12:59');

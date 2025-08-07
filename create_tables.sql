@@ -28,7 +28,6 @@ CREATE TABLE Clientes (
 );
 CREATE TABLE Produtos (
     id_produto VARCHAR(6) PRIMARY KEY,
-    id_cliente VARCHAR(6),
     designacao VARCHAR(100) UNIQUE NOT NULL,
     descricao TEXT,
     tipo_de_produto VARCHAR(20) NOT NULL CHECK (
@@ -39,16 +38,14 @@ CREATE TABLE Produtos (
     stock_atual FLOAT NOT NULL,
     stock_minimo FLOAT NOT NULL,
     data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAM
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE Funcionarios (
     id_funcionario VARCHAR(6) PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    doc_identificacao VARCHAR(15) NOT NULL CHECK (
-        LENGTH(doc_identificacao) = 13 AND
-        doc_identificacao LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
-    ),
+    doc_identificacao VARCHAR(12) NOT NULL CHECK (
+	  doc_identificacao LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
+	),
     nif INTEGER UNIQUE NOT NULL CHECK (
         nif BETWEEN 100000000 AND 999999999
     ),
@@ -56,7 +53,11 @@ CREATE TABLE Funcionarios (
         email LIKE '%@%.%'
     ),
     nr_telemovel VARCHAR(9) UNIQUE NOT NULL CHECK (
-        nr_telemovel LIKE '9[1236]%' AND LENGTH(nr_telemovel)=9
+         (nr_telemovel LIKE '91%') OR
+         (nr_telemovel LIKE '92%') OR
+         (nr_telemovel LIKE '93%') OR
+         (nr_telemovel LIKE '96%') AND 
+         LENGTH(nr_telemovel) = 9
     ),
     funcao VARCHAR(50) NOT NULL,
     data_nascimento DATE,
@@ -67,6 +68,7 @@ CREATE TABLE Funcionarios (
     data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 CREATE TABLE Fornecedores (
     id_fornecedor VARCHAR(6) PRIMARY KEY,
     nome_empresa VARCHAR(100) NOT NULL,
@@ -116,6 +118,7 @@ CREATE TABLE Eventos (
 CREATE TABLE Pagamentos (
     id_pagamento VARCHAR(6) PRIMARY KEY,
     id_produto VARCHAR(6),
+    id_cliente VARCHAR(6),
     id_funcionario VARCHAR(6),
     quantidade INTEGER NOT NULL CHECK (quantidade > 0),
     valor DECIMAL(10,2) NOT NULL,
@@ -130,6 +133,7 @@ CREATE TABLE Pagamentos (
     ),
     data_pagamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,    
     FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
     FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
 );
 CREATE TABLE encomendas (
