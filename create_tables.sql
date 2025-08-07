@@ -100,9 +100,9 @@ CREATE TABLE Eventos (
     id_cliente VARCHAR(6),
     designacao VARCHAR(100) NOT NULL,
     descricao TEXT,
-    -- tipo_de_evento VARCHAR(50) NOT NULL CHECK (
-    --     tipo_de_evento IN ('concertos', 'festivais', 'teatro', 'exposicoes')
-    -- ),
+    tipo_de_evento VARCHAR(50) NOT NULL CHECK (
+        tipo_de_evento IN ('festa', 'workshop', 'lançamento', 'exposicoes')
+    ),
     data_evento DATE NOT NULL CHECK (
         data_evento >= CURRENT_DATE
     ),
