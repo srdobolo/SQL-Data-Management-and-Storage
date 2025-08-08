@@ -45,4 +45,4 @@ VALUES
 ('I00043', 'E00033', 'P00012', 2, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00012')),
 ('I00044', 'E00034', 'P00004', 2, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00004')),
 ('I00045', 'E00034', 'P00003', 3, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00003')),
-('I00046', 'E00035', 'P00014', 1, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00014')),
+('I00046', 'E00035', 'P00014', 1, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00014'));
