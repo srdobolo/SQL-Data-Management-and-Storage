@@ -151,26 +151,24 @@ CREATE TABLE Itens_Pagamento (
 );
 CREATE TABLE encomendas (
     id_encomenda VARCHAR(6) PRIMARY KEY,
-    id_produto VARCHAR(6),
     id_fornecedor VARCHAR(6),
-    if_funcionario VARCHAR(6),
-    quantidade INTEGER NOT NULL CHECK (quantidade > 0),
-    valor DECIMAL(10,2) NOT NULL,
-    moeda VARCHAR(3) NOT NULL CHECK (
-        moeda IN ('EUR', 'USD', 'GBP')
-    ),
-    metodo_pagamento VARCHAR(20) NOT NULL CHECK (
-        metodo_pagamento IN ('cartao', 'transferencia', 'dinheiro')
-    ),
-    estado_pagamento VARCHAR(20) NOT NULL CHECK (
-        estado_pagamento IN ('pendente', 'concluido', 'cancelado')
-    ),
-    estado_encomenda VARCHAR(20) NOT NULL CHECK (
-        estado_encomenda IN ('pendente', 'processando', 'enviado', 'entregue', 'cancelado')
-    ),
+    id_funcionario VARCHAR(6),
+    moeda VARCHAR(3) NOT NULL CHECK (moeda IN ('EUR', 'USD', 'GBP')),
+    metodo_pagamento VARCHAR(20) NOT NULL CHECK (metodo_pagamento IN ('cartao', 'transferencia', 'dinheiro')),
+    estado_pagamento VARCHAR(20) NOT NULL CHECK (estado_pagamento IN ('pendente', 'concluido', 'cancelado')),
+    estado_encomenda VARCHAR(20) NOT NULL CHECK (estado_encomenda IN ('pendente', 'processando', 'enviado', 'entregue', 'cancelado')),
     data_encomenda TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
     FOREIGN KEY (id_fornecedor) REFERENCES Fornecedores(id_fornecedor),
-    FOREIGN KEY (if_funcionario) REFERENCES Funcionarios(id_funcionario)
-)
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+);
+
+CREATE TABLE encomendas_itens (
+    id_encomenda VARCHAR(6),
+    id_produto VARCHAR(6),
+    quantidade INTEGER NOT NULL CHECK (quantidade > 0),
+    valor_unitario DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_encomenda, id_produto),
+    FOREIGN KEY (id_encomenda) REFERENCES encomendas(id_encomenda),
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+);
