@@ -140,6 +140,15 @@ CREATE TABLE Pagamentos (
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
     FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
 );
+CREATE TABLE Itens_Pagamento (
+    id_pagamento VARCHAR(6),
+    id_produto VARCHAR(6),
+    quantidade INTEGER NOT NULL CHECK (quantidade > 0),
+    preco_unitario DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_pagamento, id_produto),
+    FOREIGN KEY (id_pagamento) REFERENCES Pagamentos(id_pagamento),
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+);
 CREATE TABLE encomendas (
     id_encomenda VARCHAR(6) PRIMARY KEY,
     id_produto VARCHAR(6),
