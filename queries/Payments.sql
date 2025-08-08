@@ -1,2 +1,4 @@
-SELECT ROUND(AVG(avaliacao),2)
-FROM Avaliacao;
+--ultima_compra
+--total_gasto
+--media_consumo
+--total_gasto_ultimos_6_meses
