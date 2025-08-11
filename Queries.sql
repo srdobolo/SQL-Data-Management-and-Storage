@@ -1,4 +1,4 @@
--- Clientes
+-- CLIENTES
 -- 1. Listar todos os clientes que não têm canal de aquisição definido (NULL)
 SELECT id_cliente, nome, canal_aquisicao 
 FROM Clientes
