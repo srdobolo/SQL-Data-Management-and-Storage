@@ -1,4 +1,0 @@
---ultima_compra
---total_gasto
---media_consumo
---total_gasto_ultimos_6_meses
