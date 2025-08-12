@@ -1,6 +1,16 @@
-INSERT INTO Itens_Pagamento (id_pagamento, id_produto, quantidade, preco_unitario)
-VALUES
-('PG0001', 'P00001', 2, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00001')),
+INSERT INTO Itens_Pagamento (
+    id_pagamento,       -- Identificador do pagamento ao qual o item está associado
+    id_produto,         -- Identificador do produto incluído no pagamento
+    quantidade,         -- Quantidade do produto adquirida
+    preco_unitario      -- Preço unitário do produto no momento do pagamento
+)
+VALUES (
+    'PG0001',           -- Valor do id_pagamento, vinculando o item ao pagamento PG0001
+    'P00001',           -- Valor do id_produto, indicando o produto P00001
+    2,                  -- Quantidade do produto (2 unidades)
+    -- Subconsulta para obter o preço de venda do produto P00001
+    (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00001') -- Obtém o preço unitário da tabela Produtos
+),
 ('PG0001', 'P00011', 1, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00011')),
 ('PG0002', 'P00007', 3, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00007')),
 ('PG0002', 'P00021', 2, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00021')),

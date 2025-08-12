@@ -1,6 +1,18 @@
-INSERT INTO itens_encomenda (id_item, id_encomenda, id_produto, quantidade, preco_unitario)
-VALUES
-('I00001', 'E00001', 'P00002', 5, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00002')),
+INSERT INTO Itens_Encomenda (
+    id_item,            -- Identificador único do item da encomenda
+    id_encomenda,       -- Identificador da encomenda à qual o item está associado
+    id_produto,         -- Identificador do produto incluído na encomenda
+    quantidade,         -- Quantidade do produto solicitado na encomenda
+    preco_unitario      -- Preço unitário do produto no momento da encomenda
+)
+VALUES (
+    'I00001',           -- Valor do id_item, um identificador único para o item da encomenda
+    'E00001',           -- Valor do id_encomenda, vinculando o item à encomenda E00001
+    'P00002',           -- Valor do id_produto, indicando o produto P00002
+    5,                  -- Quantidade do produto (5 unidades)
+    -- Subconsulta para obter o preço de venda do produto P00002
+    (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00002') -- Obtém o preço unitário da tabela Produtos
+),
 ('I00002', 'E00002', 'P00004', 3, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00004')),
 ('I00003', 'E00002', 'P00007', 2, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00007')),
 ('I00004', 'E00003', 'P00021', 1, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00021')),

@@ -1,5 +1,31 @@
-INSERT INTO encomendas (id_encomenda, id_fornecedor, id_funcionario, valor, moeda, metodo_pagamento, estado_pagamento, estado_encomenda, data_encomenda) VALUES
-('E0051', 'F00002', 'F00001', (SELECT SUM(qt * preco_compra) FROM (SELECT 3 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00001' UNION ALL SELECT 2 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00003')), 'EUR', 'cartao', 'concluido', 'entregue', '2024-01-10 10:00:00'),
+INSERT INTO Encomendas (
+    id_encomenda,       -- Identificador único da encomenda
+    id_fornecedor,      -- Identificador do fornecedor que fornece os produtos
+    id_funcionario,     -- Identificador do funcionário que realizou a encomenda
+    valor,              -- Valor total da encomenda, calculado dinamicamente
+    moeda,              -- Moeda utilizada na encomenda (ex.: EUR para Euro)
+    metodo_pagamento,   -- Método de pagamento usado para a encomenda (ex.: cartão, transferência)
+    estado_pagamento,   -- Estado do pagamento da encomenda (ex.: concluído, pendente)
+    estado_encomenda,   -- Estado da entrega da encomenda (ex.: entregue, em processamento)
+    data_encomenda      -- Data e hora em que a encomenda foi realizada
+)
+VALUES (
+    'E0051',            -- Valor do id_encomenda, um identificador único para a encomenda
+    'F00002',           -- Valor do id_fornecedor, associando a encomenda a um fornecedor específico
+    'F00001',           -- Valor do id_funcionario, associando a encomenda a um funcionário
+    -- Subconsulta para calcular o valor total da encomenda
+    (SELECT SUM(qt * preco_compra) FROM (
+        -- Primeira consulta: seleciona quantidade (3) e preço de compra do produto P00001
+        SELECT 3 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00001' 
+        UNION ALL -- UNION ALL combina os resultados das duas consultas numa única tabela temporária,
+        SELECT 2 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00003'
+    ) AS subquery),     -- Soma o valor total (quantidade * preço de compra) dos produtos combinados
+    'EUR',              -- Define a moeda como Euro
+    'cartao',           -- Define o método de pagamento como cartão
+    'concluido',        -- Define o estado do pagamento como concluído
+    'entregue',         -- Define o estado da encomenda como entregue
+    '2024-01-10 10:00:00' -- Define a data e hora da encomenda
+),
 ('E0052', 'F00003', 'F00002', (SELECT SUM(qt * preco_compra) FROM (SELECT 5 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00007' UNION ALL SELECT 1 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00009')), 'USD', 'transferencia', 'pendente', 'processando', '2024-02-14 14:30:00'),
 ('E0053', 'F00001', 'F00003', (SELECT SUM(qt * preco_compra) FROM (SELECT 4 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00022' UNION ALL SELECT 2 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00025')), 'GBP', 'dinheiro', 'concluido', 'enviado', '2024-03-01 09:20:00'),
 ('E0054', 'F00004', 'F00001', (SELECT 7 * preco_compra FROM Produtos WHERE id_produto = 'P00004'), 'EUR', 'cartao', 'concluido', 'entregue', '2024-04-05 11:45:00'),

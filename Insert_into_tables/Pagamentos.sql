@@ -1,11 +1,29 @@
-INSERT INTO Pagamentos (id_pagamento, id_cliente, id_funcionario, valor, moeda, metodo_pagamento, estado_pagamento, data_pagamento)
-VALUES
-('PG0001', 'C10001', 'F00001',
-  (SELECT SUM(qt * preco) FROM (
-      SELECT 2 AS qt, preco_venda AS preco FROM Produtos WHERE id_produto = 'P00001' UNION ALL
-      SELECT 1 AS qt, preco_venda AS preco FROM Produtos WHERE id_produto = 'P00011'
-  )),
-  'EUR', 'cartao', 'concluido', '2024-06-12 10:15:00'
+INSERT INTO Pagamentos (
+    id_pagamento,       -- Identificador único do pagamento
+    id_cliente,         -- Identificador do cliente que realizou o pagamento
+    id_funcionario,     -- Identificador do funcionário que processou o pagamento
+    valor,              -- Valor total do pagamento, calculado dinamicamente
+    moeda,              -- Moeda utilizada no pagamento (ex.: EUR para Euro)
+    metodo_pagamento,   -- Método de pagamento (ex.: cartão, transferência, etc.)
+    estado_pagamento,   -- Estado do pagamento (ex.: concluído, pendente, etc.)
+    data_pagamento      -- Data e hora em que o pagamento foi realizado
+)
+VALUES (
+    'PG0001',           -- Valor do id_pagamento, um identificador único para o pagamento
+    'C10001',           -- Valor do id_cliente, associando o pagamento a um cliente específico
+    'F00001',           -- Valor do id_funcionario, associando o pagamento a um funcionário
+    -- Subconsulta para calcular o valor total do pagamento
+    (SELECT SUM(qt * preco) FROM (
+        -- Primeira consulta: seleciona quantidade (2) e preço do produto P00001
+        SELECT 2 AS qt, preco_venda AS preco FROM Produtos WHERE id_produto = 'P00001' 
+        UNION ALL -- UNION ALL combina os resultados das duas consultas em uma única tabela temporária,
+        -- mantendo todas as linhas, mesmo se houver duplicatas, para maior desempenho
+        SELECT 1 AS qt, preco_venda AS preco FROM Produtos WHERE id_produto = 'P00011'
+    )),     -- Soma o valor total (quantidade * preço) dos produtos combinados
+    'EUR',              -- Define a moeda como Euro
+    'cartao',           -- Define o método de pagamento como cartão
+    'concluido',        -- Define o estado do pagamento como concluído
+    '2024-06-12 10:15:00' -- Define a data e hora do pagamento
 ),
 ('PG0002', 'C10002', 'F00002',
   (SELECT SUM(qt * preco) FROM (
