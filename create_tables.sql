@@ -47,7 +47,7 @@ CREATE TABLE Funcionarios (
     id_funcionario VARCHAR(6) PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     doc_identificacao VARCHAR(12) NOT NULL CHECK (
-	  doc_identificacao LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
+	  doc_identificacao GLOB '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
 	),
     nif INTEGER UNIQUE NOT NULL CHECK (
         nif BETWEEN 100000000 AND 399999999
@@ -82,7 +82,11 @@ CREATE TABLE Fornecedores (
         email LIKE '%@%.%'
     ),
     nr_telemovel VARCHAR(9) UNIQUE NOT NULL CHECK (
-        nr_telemovel LIKE '9[1236]%' AND LENGTH(nr_telemovel)=9
+         (nr_telemovel LIKE '91%') OR
+         (nr_telemovel LIKE '92%') OR
+         (nr_telemovel LIKE '93%') OR
+         (nr_telemovel LIKE '96%') AND 
+         LENGTH(nr_telemovel) = 9
     ),
     pessoa_contacto VARCHAR(100),
     morada TEXT,
@@ -90,6 +94,7 @@ CREATE TABLE Fornecedores (
     data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 CREATE TABLE Avaliacao (
     id_cliente VARCHAR(6) PRIMARY KEY,
     avaliacao INTEGER CHECK (avaliacao BETWEEN 1 AND 5),
@@ -127,7 +132,6 @@ CREATE TABLE Pagamentos (
     id_produto VARCHAR(6),
     id_cliente VARCHAR(6),
     id_funcionario VARCHAR(6),
-    quantidade INTEGER NOT NULL CHECK (quantidade > 0),
     valor DECIMAL(10,2) NOT NULL,
     moeda VARCHAR(3) NOT NULL CHECK (
         moeda IN ('EUR', 'USD', 'GBP')
@@ -168,6 +172,7 @@ CREATE TABLE encomendas (
 );
 
 CREATE TABLE encomendas_itens (
+	id_item VARCHAR (6),
     id_encomenda VARCHAR(6),
     id_produto VARCHAR(6),
     quantidade INTEGER NOT NULL CHECK (quantidade > 0),
