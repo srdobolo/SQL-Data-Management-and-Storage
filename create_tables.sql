@@ -50,7 +50,7 @@ CREATE TABLE Funcionarios (
 	  doc_identificacao LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
 	),
     nif INTEGER UNIQUE NOT NULL CHECK (
-        nif BETWEEN 300000000 AND 399999999
+        nif BETWEEN 100000000 AND 399999999
     ),
     email VARCHAR(100) UNIQUE NOT NULL CHECK (
         email LIKE '%@%.%'
@@ -156,6 +156,7 @@ CREATE TABLE encomendas (
     id_encomenda VARCHAR(6) PRIMARY KEY,
     id_fornecedor VARCHAR(6),
     id_funcionario VARCHAR(6),
+    valor DECIMAL(10,2) NOT NULL,
     moeda VARCHAR(3) NOT NULL CHECK (moeda IN ('EUR', 'USD', 'GBP')),
     metodo_pagamento VARCHAR(20) NOT NULL CHECK (metodo_pagamento IN ('cartao', 'transferencia', 'dinheiro')),
     estado_pagamento VARCHAR(20) NOT NULL CHECK (estado_pagamento IN ('pendente', 'concluido', 'cancelado')),

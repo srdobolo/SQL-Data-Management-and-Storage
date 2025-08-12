@@ -1,4 +1,4 @@
-INSERT INTO Itens_Encomenda (
+INSERT INTO encomendas_itens (
     id_item,            -- Identificador único do item da encomenda
     id_encomenda,       -- Identificador da encomenda à qual o item está associado
     id_produto,         -- Identificador do produto incluído na encomenda

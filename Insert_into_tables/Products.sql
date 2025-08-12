@@ -28,3 +28,35 @@ INSERT INTO Produtos
 ('P00026', 'Chicken Wings BBQ',       'Asinhas de frango assadas com molho barbecue.',                    'snacks', 3.43, 89, 50, '2024-06-09 14:02:12'),
 ('P00027', 'Onion Rings',             'Anéis de cebola empanados e fritos até dourar.',                   'snacks', 1.73, 16, 30, '2024-06-21 15:53:38'),
 ('P00028', 'Nacho Cheese',            'Tortilla chips crocantes servidos com molho de queijo quente.',    'snacks', 2.74, 99, 20, '2024-07-08 12:44:59');
+
+UPDATE Produtos SET preco_compra = CASE id_produto
+	WHEN 'P00001' THEN 3.20
+	WHEN 'P00002' THEN 1.50
+	WHEN 'P00003' THEN 2.10
+	WHEN 'P00004' THEN 3.00
+	WHEN 'P00005' THEN 2.40
+	WHEN 'P00006' THEN 1.70
+	WHEN 'P00007' THEN 2.80
+	WHEN 'P00008' THEN 1.90
+	WHEN 'P00009' THEN 3.10
+	WHEN 'P00010' THEN 1.80
+	WHEN 'P00011' THEN 2.50
+	WHEN 'P00012' THEN 1.40
+	WHEN 'P00013' THEN 2.20
+	WHEN 'P00014' THEN 3.30
+	WHEN 'P00015' THEN 3.50
+	WHEN 'P00016' THEN 1.40
+	WHEN 'P00017' THEN 2.00
+	WHEN 'P00018' THEN 1.70
+	WHEN 'P00019' THEN 3.00
+	WHEN 'P00020' THEN 1.60
+	WHEN 'P00021' THEN 1.90
+	WHEN 'P00022' THEN 1.20
+	WHEN 'P00023' THEN 2.00
+	WHEN 'P00024' THEN 1.30
+	WHEN 'P00025' THEN 1.20
+	WHEN 'P00026' THEN 2.00
+	WHEN 'P00027' THEN 1.10
+	WHEN 'P00028' THEN 1.50
+	ELSE NULL
+END;
