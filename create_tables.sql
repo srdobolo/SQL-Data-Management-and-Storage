@@ -129,7 +129,6 @@ CREATE TABLE Participacoes_Evento (
 );
 CREATE TABLE Pagamentos (
     id_pagamento VARCHAR(6) PRIMARY KEY,
-    id_produto VARCHAR(6),
     id_cliente VARCHAR(6),
     id_funcionario VARCHAR(6),
     valor DECIMAL(10,2) NOT NULL,
@@ -143,7 +142,6 @@ CREATE TABLE Pagamentos (
         estado_pagamento IN ('pendente', 'concluido', 'cancelado')
     ),
     data_pagamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,    
-    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
     FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
 );
