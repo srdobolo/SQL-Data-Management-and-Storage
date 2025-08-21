@@ -1,5 +1,12 @@
 # 📁 Data Management and Storage
 
+## Index
+- [Introduction](docs/introduction.md)
+- [Relational Databases](docs/relational-databases.md)
+- [Normalization](docs/normalization.md)
+- [SQL Queries](examples/sql-queries.md)
+- [ER Diagrams](images/er-diagram.png)
+
 ## 1. Introduction
 
 ### 1.1 Company Name
