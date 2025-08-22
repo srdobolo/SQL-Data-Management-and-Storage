@@ -2,6 +2,9 @@
 
 ## Index
 - [Introduction](docs/introduction.md)
+- [Functional Requirements](docs/functional-requirements.md)
+- [Entities and Atributes](docs/entities-atributes.md)
+- [Entities Relational Diagram](docs/entities-atributes.md)
 - [Relational Databases](docs/relational-databases.md)
 - [Normalization](docs/normalization.md)
 - [SQL Queries](examples/sql-queries.md)
@@ -43,13 +46,13 @@ Adopting an Information System (IS) is critical for:
 - Logistic integration with direct supplier connection via API;
 - Preventive maintenance by equipment usage time control.
 
-## 2. Mission and Values
+### 2. Mission and Values
 
-### 2.1 Mission
+#### 2.1 Mission
 
 To provide unique experiences of sharing and discovery around Portuguese craft beer, in an innovative environment with high quality standards and technological integration.
 
-### 2.2 Values
+#### 2.2 Values
 
 - Innovation: We value constant evolution, applying cutting-edge technology like cashless and self-service systems to enhance customer experience and service efficiency.
 - Experience and Sharing: We aim to create a sociable environment for experience exchange, with thematic events and contact with the production process to enrich knowledge and enjoyment.
@@ -58,16 +61,16 @@ To provide unique experiences of sharing and discovery around Portuguese craft b
 - Operational Sustainability: We focus on efficient stock control and smart resource management to prevent waste and shortages while guaranteeing the best customer experience.
 - Passion for National Craft Beer: We promote and support Portuguese craft beer, highlighting various styles, producers, and novelties, uplifting the national sector and always offering new experiences to customers.
 
-## 3. Our Team
+### 3. Our Team
 
-### 3.1 Organizational Structure
+#### 3.1 Organizational Structure
 
 The structure consists of:
 
 - Management/Co-Founders – Overall business management;
 - Employees – Service and operations;
 
-### 3.2 Users and Competencies
+#### 3.2 Users and Competencies
 
 - Client: External user with front-end app access linked to products and events.
 - Supplier: External user with supplier portal access related to orders.
@@ -78,31 +81,31 @@ The structure consists of:
 
 ## 4. Functional Requirements
 
-#### Client
+### Client
 
 - Visit the taproom, use the app to consult products and make purchases, reserve thematic events, buy products (beer, snacks), pay cashless or with digital supports, promote on social media, give feedback, and consult the menu.
 
-#### Supplier
+### Supplier
 
 - Supply products, access supplier portal, issue invoices and receipts, supply economate items (cups, cutlery, napkins), consult orders and deliveries.
 
-#### Accountant
+### Accountant
 
 - Perform corporate tax declarations, issue employee payment receipts, submit suppliers’ invoices to tax authorities, ensure current regulations are met, and maintain positive net income.
 
-#### Lawyer
+### Lawyer
 
 - Draft employee contracts.
 
-#### Management
+### Management
 
 - Control product stock, ensure brand and product promotion, establish partnerships, control costs and suppliers, prevent stock outages, ensure database functionality, comply with hygiene regulations, and provide uniforms (economate).
 
-#### Employees
+### Employees
 
 - Ensure establishment security, answer equipment-related questions, distribute glasses at entrance, clean kitchen dishes per HACCP, manage mise en place, clean sanitary facilities, restock consumables, and use provided uniforms.
 
-#### System
+### System
 
 - Allow menu consulting with AI translation, enable event reservations, real-time stock control, supplier order consultation and confirmation, client data registration, and birthday campaigns.
 
