@@ -11,36 +11,6 @@
 - [SQL Queries](examples/sql-queries.md)
 - [ER Diagrams](images/er-diagram.png)
 
-## 4. Functional Requirements
-
-### Client
-
-- Visit the taproom, use the app to consult products and make purchases, reserve thematic events, buy products (beer, snacks), pay cashless or with digital supports, promote on social media, give feedback, and consult the menu.
-
-### Supplier
-
-- Supply products, access supplier portal, issue invoices and receipts, supply economate items (cups, cutlery, napkins), consult orders and deliveries.
-
-### Accountant
-
-- Perform corporate tax declarations, issue employee payment receipts, submit suppliers’ invoices to tax authorities, ensure current regulations are met, and maintain positive net income.
-
-### Lawyer
-
-- Draft employee contracts.
-
-### Management
-
-- Control product stock, ensure brand and product promotion, establish partnerships, control costs and suppliers, prevent stock outages, ensure database functionality, comply with hygiene regulations, and provide uniforms (economate).
-
-### Employees
-
-- Ensure establishment security, answer equipment-related questions, distribute glasses at entrance, clean kitchen dishes per HACCP, manage mise en place, clean sanitary facilities, restock consumables, and use provided uniforms.
-
-### System
-
-- Allow menu consulting with AI translation, enable event reservations, real-time stock control, supplier order consultation and confirmation, client data registration, and birthday campaigns.
-
 ## 5. Entities and Attributes (Summary)
 
 - Client: id, name, tax number (NIF), email, phone, birth date, registration date, visit frequency, average consumption volume, favorite products, last purchase, total spent, average per purchase, newsletter subscription, acquisition channel, modification and creation timestamps.
