@@ -4,7 +4,7 @@
 
 ## 📑 Index
 
-- [Resume]
+- [1. Resume](#1 )
 - [1. Company Overview](#1-company-overview)
 - [2. Objectives](#2-objectives)
 - [3. Target Audience](#3-target-audience)
@@ -21,7 +21,7 @@
 
 ---
 
-## 1. Company Overview
+## 2. Company Overview
 
 **Company Name:** *Malta Brew, Taproom*  
 
@@ -35,7 +35,7 @@
 
 ---
 
-## 2. Objectives
+## 3. Objectives
 
 Malta Brew, Taproom aims to evolve beyond a taproom into a vibrant cultural hub.  
 
@@ -47,13 +47,13 @@ Malta Brew, Taproom aims to evolve beyond a taproom into a vibrant cultural hub.
 
 ---
 
-## 3. Target Audience
+## 4. Target Audience
 
 The establishment welcomes individuals aged **18 and above**, of any nationality, who appreciate gastronomic and cultural experiences tied to craft beer.  
 
 ---
 
-## 4. Why an Information System (IS) Matters
+## 5. Why an Information System (IS) Matters
 
 An integrated Information System is essential for achieving operational excellence and strategic growth:  
 
@@ -66,7 +66,7 @@ An integrated Information System is essential for achieving operational excellen
 
 ---
 
-## 5. Mission & Core Values
+## 6. Mission & Core Values
 
 ### Mission
 
@@ -83,7 +83,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-## 6. Team Structure & User Roles
+## 7. Team Structure & User Roles
 
 ### Organizational Structure
 
@@ -101,7 +101,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 | Management | Internal, Full       | Control across clients, events, products, and operations       |
 | Employees  | Internal, Limited    | Access to clients, events, and products (day-to-day tasks)     |
 
-## 7. Functional Requirements
+## 8. Functional Requirements, Non-Functional Requirements and Others
 
 ### 👤 For the Customer
 
@@ -158,7 +158,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-## 3. Non-Functional Requirements
+### Non-Functional Requirements
 
 - NFR01: **Security** – Sensitive data encryption, permission management, payment security.
 - NFR02: **Usability** – Intuitive interface, multilingual, accessible via app and kiosk.
@@ -169,7 +169,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-## 4. Technical Constraints
+### Technical Constraints
 
 - TC01: Central database in **SQLite**.
 - TC02: Native integration with cashless terminals (own or via API).
@@ -178,7 +178,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-## 5. Reports & Audit
+### Reports & Audit
 
 - RA01: Complete listings by period: sales, customers, products.
 - RA02: Real-time stock reports.
@@ -187,19 +187,19 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-## 6. Special Rules & Notes
+### Special Rules & Notes
 
 - SR01: Integrate general stock: consumption automatically reduces stock.
 - SR02: Independent modules with communication between areas (customers, suppliers, products, events).
 - SR03: Easy maintenance and future updates.
 
-### System Entities - Malta Brew Taproom
+## 9. System Entities - Malta Brew Taproom
 
 This document describes the main entities of the system and their respective attributes, based on the relational model in SQLite.
 
 ---
 
-#### 📌 Customer
+### 📌 Customer
 
 ```sql
 Clients (
@@ -217,7 +217,7 @@ Clients (
 );
 ```
 
-#### 🍺 Product
+### 🍺 Product
 
 ```sql
 Products (
@@ -233,7 +233,7 @@ Products (
 );
 ```
 
-#### 👨‍🔧 Employee
+### 👨‍🔧 Employee
 
 ```sql
 Employees (
@@ -252,7 +252,7 @@ Employees (
 );
 ```
 
-#### 🏭 Supplier
+### 🏭 Supplier
 
 ```sql
 Suppliers (
@@ -269,7 +269,7 @@ Suppliers (
 );
 ```
 
-#### ⭐ Review
+### ⭐ Review
 
 ```sql
 Reviews (
@@ -281,7 +281,7 @@ Reviews (
 );
 ```
 
-#### 🎉 Events
+### 🎉 Events
 
 ```sql
 Events (
@@ -300,7 +300,7 @@ Events (
 );
 ```
 
-#### 🎉 Event Participation
+### 🎉 Event Participation
 
 ```sql
 Event_participation (
@@ -310,7 +310,7 @@ Event_participation (
 );
 ```
 
-#### 💳 Payments
+### 💳 Payments
 
 ```sql
 Payments (
@@ -325,7 +325,7 @@ Payments (
 );
 ```
 
-#### 💳 Payment_Items
+### 💳 Payment_Items
 
 ```sql
 Payment_items (
@@ -336,7 +336,7 @@ Payment_items (
 );
 ```
 
-#### 📦 Order
+### 📦 Order
 
 ```sql
 Orders (
@@ -353,7 +353,7 @@ Orders (
 );
 ```
 
-#### 📦 Order Items
+### 📦 Order Items
 
 ```sql
 Order_items (
