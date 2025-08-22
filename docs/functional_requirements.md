@@ -1,110 +1,110 @@
-# 📋 Requisitos do Sistema - Malta Brew Taproom
+# System Requirements - Malta Brew Taproom
 
-Este documento reúne os principais requisitos funcionais e não funcionais do sistema Malta Brew Taproom, servindo como referência para desenvolvimento, apresentação e avaliação.
-
----
-
-## 1. Objetivos do Sistema
-
-- Proporcionar experiências únicas em ambiente de taproom com degustações e eventos temáticos.
-- Implementar soluções tecnológicas (self-service, sistema cashless, app, traduções automáticas) para melhorar eficiência, controlo e satisfação do cliente.
-- Garantir uma gestão integrada de clientes, produtos, eventos, fornecedores, funcionários, economato, pagamentos e encomendas.
+This document gathers the main functional and non-functional requirements of the Malta Brew Taproom system, serving as a reference for development, presentation, and evaluation.
 
 ---
 
-## 2. Requisitos Funcionais
+## 1. System Objectives
 
-### 👤 Para o Cliente
-
-- RF01: Visitar e utilizar o espaço da taproom.
-- RF02: Consultar menu/portfólio através de app ou totem.
-- RF03: Comprar produtos (cervejas, snacks) via app/kiosk.
-- RF04: Realizar reservas e inscrições para eventos.
-- RF05: Efetuar pagamentos digitais e cashless.
-- RF06: Receber campanhas personalizadas (ex: aniversário).
-- RF07: Submeter avaliações e feedback.
-- RF08: Divulgar experiências nas redes sociais.
-
-### 🚚 Para o Fornecedor
-
-- RF09: Fornecer produtos e materiais de economato.
-- RF10: Aceder ao portal do fornecedor.
-- RF11: Consultar e confirmar encomendas e entregas.
-- RF12: Emitir faturas e recibos.
-
-### 👨‍🍳 Para o Funcionário
-
-- RF13: Garantir segurança e apoio aos clientes.
-- RF14: Repor economato e manter a limpeza conforme HACCP.
-- RF15: Tirar dúvidas dos clientes sobre equipamentos e processos.
-- RF16: Usar fardamento disponibilizado pela empresa.
-
-### 🧑‍💼 Para a Gerência
-
-- RF17: Controlar o stock e prevenir ruturas de produtos.
-- RF18: Gerir fornecedores, pagamentos e custos.
-- RF19: Divulgar a marca/produto (marketing/parcerias).
-- RF20: Garantir atualização e funcionamento do sistema.
-- RF21: Garantir conformidade com regras de higiene e segurança.
-
-### 🧾 Para o Contabilista
-
-- RF22: Emitir recibos de pagamento de funcionários.
-- RF23: Fazer declarações fiscais (ex: IRC).
-- RF24: Gerir fluxo documental (faturas de fornecedores).
-- RF25: Garantir conformidade com a legislação fiscal.
-
-### ⚖️ Para o Advogado
-
-- RF26: Redigir contratos de funcionários.
-- RF27: Aceder a documentos legais restritos.
-
-### 🖥️ Para o Sistema
-
-- RF28: Permitir tradução automática de menus.
-- RF29: Oferecer diferentes níveis de acesso conforme perfil (permissões).
-- RF30: Integrar com sistemas/API dos fornecedores.
-- RF31: Armazenar avaliações e métricas de consumo.
-- RF32: Suportar backup e recuperação de dados.
+- Provide unique experiences in a taproom environment with tastings and themed events.
+- Implement technological solutions (self-service, cashless system, app, automatic translations) to improve efficiency, control, and customer satisfaction.
+- Ensure integrated management of customers, products, events, suppliers, employees, stockroom, payments, and orders.
 
 ---
 
-## 3. Requisitos Não Funcionais
+## 2. Functional Requirements
 
-- RNF01: **Segurança** – Criptografia de dados sensíveis, gestão de permissões, segurança no pagamento.
-- RNF02: **Usabilidade** – Interface intuitiva, multilingue, acessível por app e totem.
-- RNF03: **Desempenho** – Baixo tempo de resposta para operações críticas (pagamentos, stock, registos).
-- RNF04: **Fiabilidade** – Backups regulares, logs de auditoria, tolerância a falhas.
-- RNF05: **Escalabilidade** – Sistema preparado para crescimento do volume de clientes e eventos.
-- RNF06: **Conformidade Legal** – Cumprimento do RGPD e regulamentação do setor.
+### 👤 For the Customer
+
+- FR01: Visit and use the taproom space.
+- FR02: Consult the menu/portfolio via app or kiosk.
+- FR03: Purchase products (beers, snacks) via app/kiosk.
+- FR04: Make reservations and register for events.
+- FR05: Make digital and cashless payments.
+- FR06: Receive personalized campaigns (e.g., birthday offers).
+- FR07: Submit reviews and feedback.
+- FR08: Share experiences on social media.
+
+### 🚚 For the Supplier
+
+- FR09: Supply products and stockroom materials.
+- FR10: Access the supplier portal.
+- FR11: View and confirm orders and deliveries.
+- FR12: Issue invoices and receipts.
+
+### 👨‍🍳 For the Employee
+
+- FR13: Ensure safety and support for customers.
+- FR14: Restock supplies and maintain cleanliness according to HACCP.
+- FR15: Answer customer questions about equipment and processes.
+- FR16: Wear company-provided uniforms.
+
+### 🧑‍💼 For Management
+
+- FR17: Control stock and prevent product shortages.
+- FR18: Manage suppliers, payments, and costs.
+- FR19: Promote the brand/product (marketing/partnerships).
+- FR20: Ensure system updates and proper functioning.
+- FR21: Ensure compliance with hygiene and safety rules.
+
+### 🧾 For the Accountant
+
+- FR22: Issue employee payment receipts.
+- FR23: File tax declarations (e.g., corporate tax).
+- FR24: Manage document flow (supplier invoices).
+- FR25: Ensure compliance with tax legislation.
+
+### ⚖️ For the Lawyer
+
+- FR26: Draft employee contracts.
+- FR27: Access restricted legal documents.
+
+### 🖥️ For the System
+
+- FR28: Enable automatic translation of menus.
+- FR29: Offer different access levels according to profile (permissions).
+- FR30: Integrate with supplier systems/APIs.
+- FR31: Store reviews and consumption metrics.
+- FR32: Support data backup and recovery.
 
 ---
 
-## 4. Restrições Técnicas
+## 3. Non-Functional Requirements
 
-- RT01: Base de dados central em **SQLite**.
-- RT02: Integração nativa com terminais cashless (próprios ou via API).
-- RT03: Compatibilidade com dispositivos móveis e quiosques de autoatendimento.
-- RT04: Exportação automática de relatórios em **PDF/CSV**.
-
----
-
-## 5. Relatórios & Auditoria
-
-- RA01: Listagens completas por período: vendas, clientes, produtos.
-- RA02: Relatórios de stock em tempo real.
-- RA03: Histórico detalhado de pagamentos e encomendas.
-- RA04: Dashboards de métricas (consumo, frequência, produtos populares).
+- NFR01: **Security** – Sensitive data encryption, permission management, payment security.
+- NFR02: **Usability** – Intuitive interface, multilingual, accessible via app and kiosk.
+- NFR03: **Performance** – Low response time for critical operations (payments, stock, records).
+- NFR04: **Reliability** – Regular backups, audit logs, fault tolerance.
+- NFR05: **Scalability** – System prepared for growth in customer and event volume.
+- NFR06: **Legal Compliance** – GDPR compliance and sector regulations.
 
 ---
 
-## 6. Regras Especiais & Observações
+## 4. Technical Constraints
 
-- RE01: Integrar stock geral: saídas para consumo baixam stock automaticamente.
-- RE02: Módulos independentes e comunicação entre áreas (clientes, fornecedores, produtos, eventos).
-- RE03: Facilidade de manutenção e atualização futura.
+- TC01: Central database in **SQLite**.
+- TC02: Native integration with cashless terminals (own or via API).
+- TC03: Compatibility with mobile devices and self-service kiosks.
+- TC04: Automatic export of reports in **PDF/CSV**.
 
 ---
 
-> 💡 **Nota:**  
-> Para expandir este documento, poderá adicionar casos de uso, diagramas de casos de uso, e detalhamento de requisitos com fluxos de interação ou wireframes.
+## 5. Reports & Audit
+
+- RA01: Complete listings by period: sales, customers, products.
+- RA02: Real-time stock reports.
+- RA03: Detailed history of payments and orders.
+- RA04: Dashboards with metrics (consumption, frequency, popular products).
+
+---
+
+## 6. Special Rules & Notes
+
+- SR01: Integrate general stock: consumption automatically reduces stock.
+- SR02: Independent modules with communication between areas (customers, suppliers, products, events).
+- SR03: Easy maintenance and future updates.
+
+---
+
+> 💡 **Note:**  
+> To expand this document, you may add use cases, use case diagrams, and more detailed requirements with interaction flows or wireframes.
