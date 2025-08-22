@@ -156,14 +156,14 @@ CREATE TABLE Clientes (
          LENGTH(nr_telemovel) = 9
     ),
     data_nascimento DATE CHECK (
-    	data_nascimento <= CURRENT_DATE AND 
-    	data_nascimento LIKE '____-__-__'
-    	),
+    data_nascimento <= CURRENT_DATE AND 
+    data_nascimento LIKE '____-__-__'
+    ),
     newsletter BOOLEAN NOT NULL DEFAULT FALSE,
     autorizacao BOOLEAN NOT NULL DEFAULT FALSE,
     canal_aquisicao VARCHAR(100) CHECK (
-    	canal_aquisicao IN ('Instagram', 'Facebook', 'Tik Tok', 'Google', 'Eventos', 'TheFork', 'Email Marketing', 'Recomendação Amigo')
-    	),  
+    canal_aquisicao IN ('Instagram', 'Facebook', 'Tik Tok', 'Google', 'Eventos', 'TheFork', 'Email Marketing', 'Recomendação Amigo')
+    ),  
     data_modificacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -196,9 +196,7 @@ ADD COLUMN preco_compra DECIMAL(10,2); -- Adiciona a coluna preco_compra. Guarda
 CREATE TABLE Funcionarios (
     id_funcionario VARCHAR(6) PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    doc_identificacao VARCHAR(12) NOT NULL CHECK (
-	  doc_identificacao GLOB '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
-	),
+    doc_identificacao VARCHAR(12) NOT NULL CHECK (doc_identificacao GLOB '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'),
     nif INTEGER UNIQUE NOT NULL CHECK (
         nif BETWEEN 100000000 AND 399999999
     ),
