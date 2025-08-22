@@ -1,6 +1,7 @@
 # 📁 Data Management and Storage
 
 ## Index
+
 - [Introduction](docs/introduction.md)
 - [Functional Requirements](docs/functional-requirements.md)
 - [Entities and Atributes](docs/entities-atributes.md)
