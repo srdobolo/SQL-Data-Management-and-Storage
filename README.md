@@ -1,6 +1,6 @@
 # 🍺 Malta Brew, Taproom Information System
 
-<img src="images\c7b24502-d400-4153-9ce7-eb6fc51b8de1.png" alt="Logo" width="200"/>
+![Logo](images/c7b24502-d400-4153-9ce7-eb6fc51b8de1.png)
 
 ## 📑 Index
 
