@@ -44,6 +44,7 @@ CREATE TABLE Products (
         product_type IN ('beer', 'snacks')
     ),
     sale_price DECIMAL(10,2) NOT NULL,
+    purchase_price DECIMAL(10,2) NOT NULL,
     current_stock FLOAT NOT NULL,
     minimum_stock FLOAT NOT NULL,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
