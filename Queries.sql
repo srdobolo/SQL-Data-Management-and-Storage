@@ -194,3 +194,56 @@ FROM Produtos
 WHERE preco_compra IS NOT NULL
 ORDER BY margem_percentual DESC
 LIMIT 10;
+
+SELECT id_produto, designacao, preco_venda, stock_atual, stock_minimo
+FROM Produtos
+WHERE preco_venda > 2 AND stock_atual < stock_minimo;
+
+SELECT id_fornecedor, nome_empresa, pais
+FROM Fornecedores
+WHERE NOT pais = 'Portugal';
+
+SELECT id_evento, designacao, capacidade
+FROM Eventos
+WHERE capacidade BETWEEN 50 AND 100;
+
+SELECT id_pagamento, valor, estado_pagamento
+FROM Pagamentos
+WHERE estado_pagamento IS 'pendente';
+
+SELECT DISTINCT canal_aquisicao
+FROM Clientes;
+
+SELECT 
+    moeda,                     -- Tipo de moeda usada no pagamento
+    COUNT(*) AS total_pagamentos -- Contagem de pagamentos por moeda
+FROM Pagamentos                -- Origem dos dados
+GROUP BY moeda                 -- Agrupa por moeda
+HAVING COUNT(*) < 5;           -- Filtra apenas moedas com menos de 5 pagamentos
+
+-- Listar fornecedores cujo nome inclua a palavra "brew", sem diferenciar maiúsculas de minúsculas
+SELECT 
+    id_fornecedor,        -- ID do fornecedor
+    nome_empresa          -- Nome da empresa fornecedora
+FROM Fornecedores         -- Origem dos fornecedores
+WHERE nome_empresa ILIKE '%brew%'; -- Pesquisa sem considerar maiúsculas/minúsculas
+
+-- Lista os clientes que fizeram mais do que 3 compras concluídas e quanto gastaram no total
+SELECT 
+    id_cliente,                                   -- ID do cliente
+    COUNT(*) AS total_compras,                    -- Nº total de compras
+    ROUND(SUM(valor), 2) AS total_gasto           -- Soma do valor total gasto
+FROM Pagamentos
+WHERE estado_pagamento = 'concluido'              -- Apenas compras concluídas
+GROUP BY id_cliente                               -- Agrupar por cliente
+HAVING COUNT(*) > 1                               -- Apenas quem comprou mais de 1 vez
+ORDER BY total_compras DESC;                      -- Ordenar por quem mais comprou
+
+-- Lista os produtos com preço de venda entre 5€ e 15€, ordenados do mais caro para o mais barato
+SELECT 
+    id_produto,                -- ID do produto
+    designacao,                -- Nome/designação do produto
+    preco_venda                -- Preço de venda do produto
+FROM Produtos                  -- Origem: tabela de produtos
+WHERE preco_venda BETWEEN 2 AND 3  -- Apenas produtos cujo preço está entre 2 e 3 euros
+ORDER BY preco_venda DESC;     -- Ordena do preço mais alto para o mais baixo

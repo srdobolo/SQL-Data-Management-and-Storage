@@ -1,4 +1,7 @@
-INSERT INTO Clientes VALUES
+INSERT INTO Clients (
+    id_client, name, tax_id, email, phone_number, date_of_birth,
+    newsletter, authorization, acquisition_channel, modified_at, created_at
+) VALUES
 ('C10001', 'Inês Marinho', 198745231, 'ines.marinho@email.com',  '911234567', '1990-04-13', 1, 1, 'Instagram',      '2024-08-07 13:00:01', '2024-03-10 09:15:02'),
 ('C10002', 'David Lopes',   245879123, 'david.lopes@mail.pt',    '923456789', '1987-10-30', 0, 1, 'Facebook',       '2024-08-01 14:25:40', '2024-02-22 08:17:28'),
 ('C10003', 'Sara Faria',    393217894, 'sara.faria@gmail.com',   '931219876', NULL,         1, 0, NULL,             '2024-04-07 12:02:49', '2024-03-15 10:00:00'),
@@ -200,8 +203,10 @@ INSERT INTO Clientes VALUES
 ('C10199', 'Fernando Amado',        319507182, 'fernando.amado@terra.com',      '921048357', '1995-11-01', 0, 1, 'TheFork',             '2024-07-25 13:18:30', '2024-02-15 17:47:47'),
 ('C10200', 'Diana Lopes',           369148205, 'diana.lopes@icloud.com',        '968152473', NULL,         1, 0, NULL,                 '2024-08-07 19:00:22', '2024-05-13 10:29:01');
 
-INSERT INTO Funcionarios
-(id_funcionario, nome, doc_identificacao, nif, email, nr_telemovel, funcao, data_nascimento, morada, iban, data_modificacao, data_criacao) VALUES
+INSERT INTO Employees (
+    id_employee, name, identification_doc, tax_id, email, phone_number,
+    role, date_of_birth, address, iban, modified_at, created_at
+) VALUES
 ('F00001', 'Ricardo Figueiredo', '12345678 AB 5', 187654321, 'ricardo.figueiredo@empresa.pt', '913456789', 'multitasker',   '1989-06-16', 'Rua do Trabalho, 12, Porto', 'PT50000201234567890123456', '2024-07-04 15:03:26', '2024-03-18 11:27:01'),
 ('F00002', 'Joana Santos',       '98765432 CD 0', 225678991, 'joana.santos@email.com',         '932145678', 'multitasker',   NULL,                       NULL,                         'PT50000298765432101234567', '2024-06-19 10:22:44', '2024-04-11 14:08:17'),
 ('F00003', 'Carlos Louro',       '24681357 ZX 4', 193456172, 'carlos.louro@mail.pt',           '961234567', 'multitasker',   '1995-02-27', 'Av. Central, 82, Braga',     'PT50000324681357901357923', '2024-08-06 20:30:12', '2024-01-14 16:05:38'),
@@ -209,8 +214,10 @@ INSERT INTO Funcionarios
 ('F00005', 'Mário Serafim',      '75395148 EF 2', 286380154, 'mario.serafim@empresa.org',      '926457138', 'segurança',     '1978-05-02', 'Av. das Flores, 206, Lisboa', 'PT50000775395148605896231', '2024-07-15 11:38:44', '2024-04-17 10:52:04'),
 ('F00006', 'Tânia Costa',        '15935728 GH 9', 244578365, 'tania.costa@gmail.com',          '919284317', 'segurança',     NULL,                       NULL,                         'PT50000815935728404857362', '2024-06-06 17:20:23', '2024-02-08 13:12:59');
 
-INSERT INTO Produtos 
-(id_produto, designacao, descricao, tipo_de_produto, preco_venda, stock_atual, stock_minimo, data_criacao) VALUES
+INSERT INTO Products (
+    id_product, name, description, product_type, sale_price,
+    current_stock, minimum_stock, created_at
+) VALUES
 ('P00001', 'Northern Hop',            'Citrusy aroma and balanced bitterness.',                      'cerveja', 4.79, 31, 30, '2024-02-23 11:41:32'),
 ('P00002', 'Valley Wheat',            'Light, fruity and refreshing.',                              'cerveja', 2.61, 0, 20, '2024-03-05 15:03:01'),
 ('P00003', 'Dark Mountain',           'Robust beer with notes of coffee and chocolate.',            'cerveja', 3.05, 73, 50, '2024-04-08 13:29:44'),
@@ -240,7 +247,7 @@ INSERT INTO Produtos
 ('P00027', 'Onion Rings',             'Anéis de cebola empanados e fritos até dourar.',                   'snacks', 1.73, 16, 30, '2024-06-21 15:53:38'),
 ('P00028', 'Nacho Cheese',            'Tortilla chips crocantes servidos com molho de queijo quente.',    'snacks', 2.74, 99, 20, '2024-07-08 12:44:59');
 
-INSERT INTO Avaliacao (id_cliente, avaliacao, comentario, visibilidade) VALUES
+INSERT INTO Reviews (id_client, rating, comment, visibility) VALUES
 ('C10002', 5,    'Top service, will return!',                        1),
 ('C10011', 5,    'Best beers I have tried in the city.',              1),
 ('C10023', 4,    'Good, but the music was too loud.',                1),
@@ -278,9 +285,10 @@ INSERT INTO Avaliacao (id_cliente, avaliacao, comentario, visibilidade) VALUES
 ('C10139', 5,    'Really enjoyed the snacks.',                       1),
 ('C10192', 4,    NULL,                                                1);
 
-INSERT INTO Eventos
-(id_evento, designacao, descricao, tipo_de_evento, data_evento, hora_evento, localizacao, capacidade, evento_privado, preco, data_modificacao, data_criacao)
-VALUES
+INSERT INTO Events (
+    id_event, name, description, event_type, event_date, event_time,
+    location, capacity, private_event, price, modified_at, created_at
+) VALUES
 ('E00001', 'St. Patrick’s Bash',    'Festa com cerveja verde, música irlandesa e brindes.',  'festa',      '2025-03-17', '21:00', 'Taproom Principal',  60, FALSE, 10.00, '2025-03-05 12:20:02', '2025-02-22 10:12:47'),
 ('E00002', 'Craft Beer Launch',     'Lançamento da nossa Baltic Porter sazonal.',             'lançamento', '2025-05-10', '19:30', 'Sala de Provas',     60, FALSE, 3.50,  '2025-05-01 16:03:11', '2025-04-11 13:12:19'),
 ('E00003', 'Arte na Taproom',       'Exposição de artistas locais com degustação de snacks.', 'outro',      '2025-06-22', '17:00', 'Galeria Taproom',    60, FALSE, 4.00,  '2025-06-05 11:05:50', '2025-05-21 09:58:34'),
@@ -290,7 +298,7 @@ VALUES
 ('E00007', 'Quiz Night',            'Noite de quiz com prémios para as melhores equipas.',    'outro',      '2025-09-25', '21:15', 'Taproom Principal',  60, FALSE, 2.00,  '2025-08-07 18:00:00', '2025-08-07 18:00:00'),
 ('E00008', 'Hamburgers & Beer Workshop', 'Workshop especial de harmonização.',                'workshop',   '2025-10-04', '16:00', 'Sala Gourmet',       20, TRUE, 17.50, '2025-08-07 18:00:00', '2025-08-07 18:00:00');
 
-INSERT INTO Participacoes_Evento (id_evento, id_cliente, data_inscricao) VALUES
+INSERT INTO Event_Participations (id_event, id_client, registration_date) VALUES
 ('E00001', 'C10001', '2025-02-20 13:40:00'),
 ('E00001', 'C10002', '2025-02-25 16:10:00'),
 ('E00001', 'C10003', '2025-02-26 09:55:00'),
@@ -394,8 +402,10 @@ INSERT INTO Participacoes_Evento (id_evento, id_cliente, data_inscricao) VALUES
 ('E00008', 'C10024', '2025-10-01 20:33:00'),
 ('E00008', 'C10025', '2025-10-02 18:06:00');
 
-INSERT INTO Fornecedores
-(id_fornecedor, nome_empresa, nif, email, nr_telemovel, pessoa_contacto, morada, pais, data_modificacao, data_criacao) VALUES
+INSERT INTO Suppliers (
+    id_supplier, company_name, tax_id, email, phone_number,
+    contact_person, address, country, modified_at, created_at
+) VALUES
 ('F00001', 'SnackMasters Portugal',    515378240, 'comercial@snackmasters.pt',     '917452836', 'Vera Coelho',   'Rua do Armazém, 120, Lisboa',      'Portugal',    '2024-05-18 12:18:55', '2024-01-25 10:15:30'),
 ('F00002', 'HopNation GmbH',           548792105, 'info@hopnation.de',             '931275846', 'Maximilian Beer','Hopsweg 9, 21335 Lüneburg',        'Alemanha',    '2024-06-07 08:41:06', '2024-02-13 12:21:44'),
 ('F00003', 'GoldenGrain Snacks',       525804113, 'vendas@goldengrainsnacks.com',  '963172875', NULL,             NULL,                               'Reuno Unido',     '2024-02-26 19:14:24', '2024-01-28 15:18:22'),
@@ -406,17 +416,10 @@ INSERT INTO Fornecedores
 ('F00008', 'Superbock Distribuição',   545379851, 'clientes@superbockdistrib.pt',  '919654703', NULL,             'Rua da Fábrica, 99, Porto',         'Portugal',    '2024-07-21 09:28:11', '2024-02-22 16:43:50'),
 ('F00009', 'Hops & Co. Ltd.',          532478910, 'clientes@hopsco.us',           '918273645', 'John Doe',      '2567 Willow Street, Springfield, IL 62704',   'EUA',         '2024-05-30 10:15:22', '2024-01-30 11:55:40');
 
-INSERT INTO Pagamentos (
-    id_pagamento,       -- Identificador único do pagamento
-    id_cliente,         -- Identificador do cliente que realizou o pagamento
-    id_funcionario,     -- Identificador do funcionário que processou o pagamento
-    valor,              -- Valor total do pagamento, calculado dinamicamente
-    moeda,              -- Moeda utilizada no pagamento (ex.: EUR para Euro)
-    metodo_pagamento,   -- Método de pagamento (ex.: cartão, transferência, etc.)
-    estado_pagamento,   -- Estado do pagamento (ex.: concluído, pendente, etc.)
-    data_pagamento      -- Data e hora em que o pagamento foi realizado
-)
-VALUES (
+INSERT INTO Payments (
+    id_payment, id_client, id_employee, amount, currency,
+    payment_method, payment_status, payment_date
+) VALUES (
     'PG0001',           -- Valor do id_pagamento, um identificador único para o pagamento
     'C10001',           -- Valor do id_cliente, associando o pagamento a um cliente específico
     'F00001',           -- Valor do id_funcionario, associando o pagamento a um funcionário
@@ -807,13 +810,7 @@ VALUES (
   'EUR', 'cartao', 'concluido', '2024-07-25 12:30:00'
 );
 
-INSERT INTO Itens_Pagamento (
-    id_pagamento,       -- Identificador do pagamento ao qual o item está associado
-    id_produto,         -- Identificador do produto incluído no pagamento
-    quantidade,         -- Quantidade do produto adquirida
-    preco_unitario      -- Preço unitário do produto no momento do pagamento
-)
-VALUES (
+INSERT INTO Payment_Items (id_payment, id_product, quantity, unit_price) VALUES (
     'PG0001',           -- Valor do id_pagamento, vinculando o item ao pagamento PG0001
     'P00001',           -- Valor do id_produto, indicando o produto P00001
     2,                  -- Quantidade do produto (2 unidades)
@@ -886,7 +883,7 @@ VALUES (
 ('PG0055', 'P00001', 2, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00001')),
 ('PG0055', 'P00014', 3, (SELECT preco_venda FROM Produtos WHERE id_produto = 'P00014'));
 
-UPDATE Produtos SET preco_compra = CASE id_produto
+UPDATE Products SET purchase_price = CASE id_product
 	WHEN 'P00001' THEN 3.20
 	WHEN 'P00002' THEN 1.50
 	WHEN 'P00003' THEN 2.10
@@ -919,18 +916,10 @@ UPDATE Produtos SET preco_compra = CASE id_produto
 END;
 
 
-INSERT INTO Encomendas (
-    id_encomenda,       -- Identificador único da encomenda
-    id_fornecedor,      -- Identificador do fornecedor que fornece os produtos
-    id_funcionario,     -- Identificador do funcionário que realizou a encomenda
-    valor,              -- Valor total da encomenda, calculado dinamicamente
-    moeda,              -- Moeda utilizada na encomenda (ex.: EUR para Euro)
-    metodo_pagamento,   -- Método de pagamento usado para a encomenda (ex.: cartão, transferência)
-    estado_pagamento,   -- Estado do pagamento da encomenda (ex.: concluído, pendente)
-    estado_encomenda,   -- Estado da entrega da encomenda (ex.: entregue, em processamento)
-    data_encomenda      -- Data e hora em que a encomenda foi realizada
-)
-VALUES (
+INSERT INTO Orders (
+    id_order, id_supplier, id_employee, amount, currency,
+    payment_method, payment_status, order_status, order_date
+) VALUES (
     'E0051',            -- Valor do id_encomenda, um identificador único para a encomenda
     'F00002',           -- Valor do id_fornecedor, associando a encomenda a um fornecedor específico
     'F00001',           -- Valor do id_funcionario, associando a encomenda a um funcionário
@@ -977,14 +966,7 @@ VALUES (
 ('E0079', 'F00002', 'F00002', (SELECT SUM(qt * preco_compra) FROM (SELECT 1 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00001' UNION ALL SELECT 2 AS qt, preco_compra FROM Produtos WHERE id_produto = 'P00002')), 'USD', 'transferencia', 'pendente', 'processando', '2026-05-22 16:20:00'),
 ('E0080', 'F00003', 'F00003', (SELECT 3 * preco_compra FROM Produtos WHERE id_produto = 'P00004'), 'GBP', 'dinheiro', 'concluido', 'entregue', '2026-06-30 10:10:00');
 
-INSERT INTO encomendas_itens (
-    id_item,            -- Identificador único do item da encomenda
-    id_encomenda,       -- Identificador da encomenda à qual o item está associado
-    id_produto,         -- Identificador do produto incluído na encomenda
-    quantidade,         -- Quantidade do produto solicitado na encomenda
-    valor_unitario      -- Preço unitário do produto no momento da encomenda
-)
-VALUES (
+INSERT INTO Order_Items (id_order, id_product, quantity, unit_value) VALUES (
     'I00001',           -- Valor do id_item, um identificador único para o item da encomenda
     'E00001',           -- Valor do id_encomenda, vinculando o item à encomenda E00001
     'P00002',           -- Valor do id_produto, indicando o produto P00002
