@@ -103,8 +103,3 @@ This document gathers the main functional and non-functional requirements of the
 - SR01: Integrate general stock: consumption automatically reduces stock.
 - SR02: Independent modules with communication between areas (customers, suppliers, products, events).
 - SR03: Easy maintenance and future updates.
-
----
-
-> 💡 **Note:**  
-> To expand this document, you may add use cases, use case diagrams, and more detailed requirements with interaction flows or wireframes.

@@ -1,10 +1,10 @@
-# 🗃️ Entidades do Sistema - Malta Brew Taproom
+# 🗃️ System Entities - Malta Brew Taproom
 
-Este documento descreve as entidades principais do sistema e os seus respetivos atributos, com base no modelo relacional em SQLite.
+This document describes the main entities of the system and their respective attributes, based on the relational model in SQLite.
 
 ---
 
-## 📌 Cliente
+## 📌 Customer
 
 ```sql
 Cliente(
@@ -28,7 +28,7 @@ Cliente(
 )
 ```
 
-## 🎉 Evento
+## 🎉 Event
 
 ```sql
 Evento(
@@ -46,7 +46,7 @@ Evento(
 )
 ```
 
-## 🍺 Produto
+## 🍺 Product
 
 ```sql
 Produto(
@@ -66,7 +66,7 @@ Produto(
 )
 ```
 
-## 🏭 Fornecedor
+## 🏭 Supplier
 
 ```sql
 Fornecedor(
@@ -85,7 +85,7 @@ Fornecedor(
 )
 ```
 
-## 👨‍🔧 Funcionário
+## 👨‍🔧 Employee
 
 ```sql
 Funcionario(
@@ -104,7 +104,7 @@ Funcionario(
 )
 ```
 
-## ⭐ Avaliação
+## ⭐ Review
 
 ```sql
 Avaliacao(
@@ -119,7 +119,7 @@ Avaliacao(
 )
 ```
 
-## 💳 Pagamento
+## 💳 Payment
 
 ```sql
 Pagamento(
@@ -139,7 +139,7 @@ Pagamento(
 )
 ```
 
-## 📦 Encomenda
+## 📦 Order
 
 ```sql
 Encomenda(
