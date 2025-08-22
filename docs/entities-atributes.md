@@ -1,4 +1,4 @@
-# 🗃️ System Entities - Malta Brew Taproom
+# System Entities - Malta Brew Taproom
 
 This document describes the main entities of the system and their respective attributes, based on the relational model in SQLite.
 
@@ -7,152 +7,164 @@ This document describes the main entities of the system and their respective att
 ## 📌 Customer
 
 ```sql
-Cliente(
-  id_cliente INTEGER PRIMARY KEY, 
-  nome TEXT, 
-  nif TEXT, 
-  email TEXT, 
-  nr_telemovel TEXT, 
-  data_nascimento DATE, 
-  data_registo DATE, 
-  frequencia_visitas INTEGER, 
-  volume_medio_consumo REAL, 
-  produtos_favoritos TEXT, 
-  ultima_compra DATE, 
-  total_gasto REAL, 
-  media_consumo_compra REAL, 
-  newsletter INTEGER,        -- 0/1 (BOOLEAN em SQLite)
-  canal_aquisicao TEXT, 
-  data_modificacao DATE, 
-  data_criacao DATE
-)
-```
-
-## 🎉 Event
-
-```sql
-Evento(
-  id_evento INTEGER PRIMARY KEY, 
-  designacao TEXT, 
-  descricao TEXT, 
-  tipo_evento TEXT, 
-  data DATE, 
-  hora TEXT,                -- SQLite não tem tipo TIME. Use TEXT (HH:MM:SS)
-  numero_inscritos INTEGER, 
-  evento_privado INTEGER,   -- 0/1 (BOOLEAN em SQLite)
-  preco REAL, 
-  data_modificacao DATE, 
-  data_criacao DATE
-)
+Clients (
+    id_client VARCHAR,
+    name VARCHAR,
+    tax_id INTEGER,
+    email VARCHAR,
+    phone_number VARCHAR,
+    date_of_birth DATE,
+    newsletter BOOLEAN,
+    authorization BOOLEAN,
+    acquisition_channel VARCHAR,
+    modified_at TIMESTAMP,
+    created_at TIMESTAMP
+);
 ```
 
 ## 🍺 Product
 
 ```sql
-Produto(
-  id_produto INTEGER PRIMARY KEY, 
-  designacao TEXT, 
-  descricao TEXT, 
-  tipo_produto TEXT, 
-  data DATE, 
-  hora TEXT, 
-  stock_atual INTEGER, 
-  stock_minimo INTEGER, 
-  preco_compra REAL, 
-  preco_venda REAL, 
-  id_fornecedor INTEGER, 
-  data_modificacao DATE, 
-  data_criacao DATE
-)
-```
-
-## 🏭 Supplier
-
-```sql
-Fornecedor(
-  id_fornecedor INTEGER PRIMARY KEY, 
-  nome_empresa TEXT, 
-  pessoa_contacto TEXT, 
-  nif TEXT, 
-  email TEXT, 
-  telemovel TEXT, 
-  morada TEXT, 
-  pais TEXT, 
-  tipo_fornecedor TEXT, 
-  produtos_fornecidos TEXT, 
-  data_modificacao DATE, 
-  data_criacao DATE
-)
+Products (
+    id_product VARCHAR,
+    name VARCHAR,
+    description TEXT,
+    product_type VARCHAR,
+    sale_price DECIMAL,
+    current_stock FLOAT,
+    minimum_stock FLOAT,
+    modified_at TIMESTAMP,
+    created_at TIMESTAMP
+);
 ```
 
 ## 👨‍🔧 Employee
 
 ```sql
-Funcionario(
-  id_funcionario INTEGER PRIMARY KEY, 
-  nome TEXT, 
-  nif TEXT, 
-  email TEXT, 
-  nr_telemovel TEXT, 
-  data_nascimento DATE, 
-  identificacao TEXT, 
-  morada TEXT, 
-  iban TEXT, 
-  funcao TEXT, 
-  data_modificacao DATE, 
-  data_criacao DATE
-)
+Employees (
+    id_employee VARCHAR,
+    name VARCHAR,
+    identification_doc VARCHAR,
+    tax_id INTEGER,
+    email VARCHAR,
+    phone_number VARCHAR,
+    role VARCHAR,
+    date_of_birth DATE,
+    address TEXT,
+    iban VARCHAR,
+    modified_at TIMESTAMP,
+    created_at TIMESTAMP
+);
+```
+
+## 🏭 Supplier
+
+```sql
+Suppliers (
+    id_supplier VARCHAR,
+    company_name VARCHAR,
+    tax_id INTEGER,
+    email VARCHAR,
+    phone_number VARCHAR,
+    contact_person VARCHAR,
+    address TEXT,
+    country VARCHAR,
+    modified_at TIMESTAMP,
+    created_at TIMESTAMP
+);
 ```
 
 ## ⭐ Review
 
 ```sql
-Avaliacao(
-  id_avaliacao INTEGER PRIMARY KEY, 
-  score INTEGER, 
-  data_avaliacao DATE, 
-  comentario TEXT, 
-  visibilidade INTEGER,     -- 0/1 (BOOLEAN em SQLite)
-  id_cliente INTEGER, 
-  data_modificacao DATE, 
-  data_criacao DATE
-)
+Reviews (
+    id_review VARCHAR,
+    rating INTEGER,
+    comment TEXT,
+    visibility BOOLEAN,
+    review_at TIMESTAMP
+);
 ```
 
-## 💳 Payment
+## 🎉 Events
 
 ```sql
-Pagamento(
-  id_pagamento INTEGER PRIMARY KEY, 
-  valor REAL, 
-  moeda TEXT, 
-  data_pagamento DATE, 
-  hora_pagamento TEXT, 
-  metodo_pagamento TEXT, 
-  estado_pagamento TEXT, 
-  preco_compra REAL, 
-  preco_venda REAL, 
-  fornecedor TEXT,          -- Use id_fornecedor INTEGER se for relação direta
-  imagem TEXT,              -- Caminho do ficheiro ou nome do ficheiro
-  id_cliente INTEGER, 
-  data_criacao DATE
-)
+Events (
+    id_event VARCHAR,
+    name VARCHAR,
+    description TEXT,
+    event_type VARCHAR,
+    event_date DATE,
+    event_time TIME,
+    location VARCHAR,
+    capacity INTEGER,
+    private_event INTEGER,
+    price DECIMAL,
+    modified_at TIMESTAMP,
+    created_at TIMESTAMP
+);
+```
+
+## 🎉 Event Participation
+
+```sql
+Event_participation (
+  id_client VARCHAR,
+  id_client VARCHAR,
+  registration_date DATETIME
+);
+```
+
+## 💳 Payments
+
+```sql
+Payments (
+    id_payment VARCHAR,
+    id_client VARCHAR,
+    id_employee VARCHAR,
+    amount DECIMAL,
+    currency VARCHAR,
+    payment_method VARCHAR,
+    payment_status VARCHAR,
+    payment_date TIMESTAMP
+);
+```
+
+## 💳 Payment_Items
+
+```sql
+Payment_items (
+  id_payment VARCHAR,
+  id_product VARCHAR,
+  quantity INTEGER,
+  unit_price DECIMAL
+);
 ```
 
 ## 📦 Order
 
 ```sql
-Encomenda(
-  id_encomenda INTEGER PRIMARY KEY, 
-  id_produto INTEGER, 
-  id_fornecedor INTEGER, 
-  valor REAL, 
-  metodo_pagamento TEXT, 
-  estado_pagamento TEXT, 
-  preco_compra REAL, 
-  preco_venda REAL, 
-  moeda TEXT, 
-  data_encomenda DATE, 
-  data_prevista_entrega DATE
-)
+Orders (
+    id_order VARCHAR,
+    id_supplier VARCHAR,
+    id_employee VARCHAR
+    amount DECIMAL,
+    currency VARCHAR,
+    payment_method VARCHAR,
+    payment_status VARCHAR,
+    order_status VARCHAR
+    order_date TIMESTAMP,
+    modified_at TIMESTAMP
+);
+```
+
+## 📦 Order Items
+
+```sql
+Order_items (
+  id_order VARCHAR,
+  id_product VARCHAR,
+  quantity INTEGER,
+  unit_value DECIMAL
+);
 ```

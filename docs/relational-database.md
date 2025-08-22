@@ -3,228 +3,233 @@
 ## Clients Table
 
 ```sql
-CREATE TABLE Clientes (
-    id_cliente VARCHAR(6) PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    nif INTEGER UNIQUE NOT NULL CHECK (
-        nif BETWEEN 100000000 AND 399999999
-    ),
+CREATE TABLE Clients (
+    id_client VARCHAR(6) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    tax_id INTEGER UNIQUE NOT NULL CHECK (
+        tax_id BETWEEN 100000000 AND 399999999
+    ), -- Portuguese standard tax number for individuals
     email VARCHAR(100) UNIQUE NOT NULL CHECK (
         email LIKE '%@%.%'
     ),
-    nr_telemovel VARCHAR(9) UNIQUE NOT NULL CHECK (
-         (nr_telemovel LIKE '91%') OR
-         (nr_telemovel LIKE '92%') OR
-         (nr_telemovel LIKE '93%') OR
-         (nr_telemovel LIKE '96%') AND 
-         LENGTH(nr_telemovel) = 9
-    ),
-    data_nascimento DATE CHECK (
-    data_nascimento <= CURRENT_DATE AND 
-    data_nascimento LIKE '____-__-__'
+    phone_number VARCHAR(9) UNIQUE NOT NULL CHECK (
+         (phone_number LIKE '91%') OR
+         (phone_number LIKE '92%') OR
+         (phone_number LIKE '93%') OR
+         (phone_number LIKE '96%') AND 
+         LENGTH(phone_number) = 9
+    ), -- Portuguese standard phonenumbers.
+    date_of_birth DATE CHECK (
+    date_of_birth <= CURRENT_DATE AND 
+    date_of_birth LIKE '____-__-__'
     ),
     newsletter BOOLEAN NOT NULL DEFAULT FALSE,
-    autorizacao BOOLEAN NOT NULL DEFAULT FALSE,
-    canal_aquisicao VARCHAR(100) CHECK (
-    canal_aquisicao IN ('Instagram', 'Facebook', 'Tik Tok', 'Google', 'Eventos', 'TheFork', 'Email Marketing', 'Recomendação Amigo')
+    authorization BOOLEAN NOT NULL DEFAULT FALSE,
+    acquisition_channel VARCHAR(100) CHECK (
+    acquisition_channel IN ('Instagram', 'Facebook', 'Tik Tok', 'Google', 'Events', 'TheFork', 'Email Marketing', 'Friend Recommendation')
     ),  
-    data_modificacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    modified_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
 ## Products Table
 
 ```sql
-CREATE TABLE Produtos (
-    id_produto VARCHAR(6) PRIMARY KEY,
-    designacao VARCHAR(100) UNIQUE NOT NULL,
-    descricao TEXT,
-    tipo_de_produto VARCHAR(20) NOT NULL CHECK (
-        tipo_de_produto IN ('cerveja', 'snacks')
+CREATE TABLE Products (
+    id_product VARCHAR(6) PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL,
+    description TEXT,
+    product_type VARCHAR(20) NOT NULL CHECK (
+        product_type IN ('beer', 'snacks')
     ),
-    preco_venda DECIMAL(10,2) NOT NULL,
-    stock_atual FLOAT NOT NULL,
-    stock_minimo FLOAT NOT NULL,
-    data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    sale_price DECIMAL(10,2) NOT NULL,
+    current_stock FLOAT NOT NULL,
+    minimum_stock FLOAT NOT NULL,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-ALTER TABLE Produtos
-ADD COLUMN preco_compra DECIMAL(10,2); -- Adiciona a coluna preco_compra. Guarda o preço de compra do produto.
+ALTER TABLE Products
+ADD COLUMN purchase_price DECIMAL(10,2); -- Adds purchase_price column. Stores the purchase cost of the product.
 ```
 
 ## Employees Table
 
 ```sql
-CREATE TABLE Funcionarios (
-    id_funcionario VARCHAR(6) PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    doc_identificacao VARCHAR(12) NOT NULL CHECK (doc_identificacao GLOB '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'),
-    nif INTEGER UNIQUE NOT NULL CHECK (
-        nif BETWEEN 100000000 AND 399999999
-    ),
+CREATE TABLE Employees (
+    id_employee VARCHAR(6) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    identification_doc VARCHAR(12) NOT NULL CHECK (
+        identification_doc GLOB '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] [A-Z][A-Z] [0-9]'
+        ), -- Portuguese standard for id number
+    tax_id INTEGER UNIQUE NOT NULL CHECK (
+        tax_id BETWEEN 100000000 AND 399999999
+    ), -- Portuguese standard tax number for individuals
     email VARCHAR(100) UNIQUE NOT NULL CHECK (
         email LIKE '%@%.%'
     ),
-    nr_telemovel VARCHAR(9) UNIQUE NOT NULL CHECK (
-         (nr_telemovel LIKE '91%') OR
-         (nr_telemovel LIKE '92%') OR
-         (nr_telemovel LIKE '93%') OR
-         (nr_telemovel LIKE '96%') AND 
-         LENGTH(nr_telemovel) = 9
-    ),
-    funcao VARCHAR(50) NOT NULL,
-    data_nascimento DATE,
-    morada TEXT,
+    phone_number VARCHAR(9) UNIQUE NOT NULL CHECK (
+         (phone_number LIKE '91%') OR
+         (phone_number LIKE '92%') OR
+         (phone_number LIKE '93%') OR
+         (phone_number LIKE '96%') AND 
+         LENGTH(phone_number) = 9
+    ), -- Portuguese standard phonenumbers.
+    role VARCHAR(50) NOT NULL,
+    date_of_birth DATE CHECK (
+        date_of_birth <= CURRENT_DATE AND 
+        date_of_birth LIKE '____-__-__'
+        ),
+    address TEXT,
     iban VARCHAR(25) NOT NULL CHECK (
         iban LIKE 'PT%' AND LENGTH(iban)=25
-    ),
-    data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ), -- Portuguese standard for IBAN. 
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
 ## Suppliers Table
 
 ```sql
-CREATE TABLE Fornecedores (
-    id_fornecedor VARCHAR(6) PRIMARY KEY,
-    nome_empresa VARCHAR(100) NOT NULL,
-    nif INTEGER UNIQUE NOT NULL CHECK (
-        nif BETWEEN 500000000 AND 599999999
-    ),
+CREATE TABLE Suppliers (
+    id_supplier VARCHAR(6) PRIMARY KEY,
+    company_name VARCHAR(100) NOT NULL,
+    tax_id INTEGER UNIQUE NOT NULL CHECK (
+        tax_id BETWEEN 500000000 AND 599999999
+    ), -- portuguese standard for companies tax id
     email VARCHAR(100) UNIQUE NOT NULL CHECK (
         email LIKE '%@%.%'
     ),
-    nr_telemovel VARCHAR(9) UNIQUE NOT NULL CHECK (
-         (nr_telemovel LIKE '91%') OR
-         (nr_telemovel LIKE '92%') OR
-         (nr_telemovel LIKE '93%') OR
-         (nr_telemovel LIKE '96%') AND 
-         LENGTH(nr_telemovel) = 9
-    ),
-    pessoa_contacto VARCHAR(100),
-    morada TEXT,
-    pais VARCHAR(50),
-    data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    phone_number VARCHAR(9) UNIQUE NOT NULL CHECK (
+         (phone_number LIKE '91%') OR
+         (phone_number LIKE '92%') OR
+         (phone_number LIKE '93%') OR
+         (phone_number LIKE '96%') AND 
+         LENGTH(phone_number) = 9
+    ), -- Portuguese standard phonenumbers.
+    contact_person VARCHAR(100),
+    address TEXT,
+    country VARCHAR(50),
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
 ## Reviews Table
 
 ```sql
-CREATE TABLE Avaliacao (
-    id_cliente VARCHAR(6) PRIMARY KEY,
-    avaliacao INTEGER CHECK (avaliacao BETWEEN 1 AND 5),
-    comentario TEXT,
-    visibilidade BOOLEAN NOT NULL DEFAULT TRUE,
-    data_avaliacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+CREATE TABLE Reviews (
+    id_client VARCHAR(6) PRIMARY KEY,
+    rating INTEGER CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    visibility BOOLEAN NOT NULL DEFAULT TRUE,
+    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_client) REFERENCES Clients(id_client)
 );
 ```
 
 ## Events Table
 
 ```sql
-CREATE TABLE Eventos (
-    id_evento      VARCHAR(6) PRIMARY KEY,
-    designacao     VARCHAR(100) NOT NULL,
-    descricao      TEXT,
-    tipo_de_evento VARCHAR(50) NOT NULL CHECK (
-        tipo_de_evento IN ('festa', 'workshop', 'lançamento', 'outro')
+CREATE TABLE Events (
+    id_event      VARCHAR(6) PRIMARY KEY,
+    name          VARCHAR(100) NOT NULL,
+    description   TEXT,
+    event_type    VARCHAR(50) NOT NULL CHECK (
+        event_type IN ('party', 'workshop', 'launch', 'other')
     ),
-    data_evento    DATE NOT NULL,
-    hora_evento    TIME NOT NULL,
-    localizacao    VARCHAR(100),
-    capacidade     INTEGER NOT NULL CHECK (capacidade > 0),
-    evento_privado BOOLEAN NOT NULL DEFAULT FALSE,
-    preco          DECIMAL(10,2),
-    data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_criacao     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    event_date    DATE NOT NULL,
+    event_time    TIME NOT NULL,
+    location      VARCHAR(100),
+    capacity      INTEGER NOT NULL CHECK (capacity > 0),
+    private_event BOOLEAN NOT NULL DEFAULT FALSE,
+    price         DECIMAL(10,2),
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
-## Events_participations Table
+## Event_participations Table
 
 ```sql
-CREATE TABLE Participacoes_Evento (
-    id_evento   VARCHAR(6) NOT NULL,
-    id_cliente  VARCHAR(6) NOT NULL,
-    data_inscricao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_evento, id_cliente),
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+CREATE TABLE Event_Participations (
+    id_event   VARCHAR(6) NOT NULL,
+    id_client  VARCHAR(6) NOT NULL,
+    registration_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_event, id_client),
+    FOREIGN KEY (id_event) REFERENCES Events(id_event),
+    FOREIGN KEY (id_client) REFERENCES Clients(id_client)
 );
 ```
 
 ## Payments Table
 
 ```sql
-CREATE TABLE Pagamentos (
-    id_pagamento VARCHAR(6) PRIMARY KEY,
-    id_cliente VARCHAR(6), 
-    id_funcionario VARCHAR(6),
-    valor DECIMAL(10,2) NOT NULL,
-    moeda VARCHAR(3) NOT NULL CHECK (
-        moeda IN ('EUR', 'USD', 'GBP')
+CREATE TABLE Payments (
+    id_payment VARCHAR(6) PRIMARY KEY,
+    id_client VARCHAR(6), 
+    id_employee VARCHAR(6),
+    amount DECIMAL(10,2) NOT NULL,
+    currency VARCHAR(3) NOT NULL CHECK (
+        currency IN ('EUR', 'USD', 'GBP')
     ),
-    metodo_pagamento VARCHAR(20) NOT NULL CHECK (
-        metodo_pagamento IN ('cartao', 'transferencia', 'dinheiro')
+    payment_method VARCHAR(20) NOT NULL CHECK (
+        payment_method IN ('card', 'transfer', 'cash')
     ),
-    estado_pagamento VARCHAR(20) NOT NULL CHECK (
-        estado_pagamento IN ('pendente', 'concluido', 'cancelado')
+    payment_status VARCHAR(20) NOT NULL CHECK (
+        payment_status IN ('pending', 'completed', 'canceled')
     ),
-    data_pagamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,    
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
-    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,    
+    FOREIGN KEY (id_client) REFERENCES Clients(id_client),
+    FOREIGN KEY (id_employee) REFERENCES Employees(id_employee)
 );
 ```
 
-## item_payment Table
+## Payment_items Table
 
 ```sql
-CREATE TABLE Itens_Pagamento (
-    id_pagamento VARCHAR(6),
-    id_produto VARCHAR(6),
-    quantidade INTEGER NOT NULL CHECK (quantidade > 0),
-    preco_unitario DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id_pagamento, id_produto),
-    FOREIGN KEY (id_pagamento) REFERENCES Pagamentos(id_pagamento),
-    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+CREATE TABLE Payment_Items (
+    id_payment VARCHAR(6),
+    id_product VARCHAR(6),
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    unit_price DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_payment, id_product),
+    FOREIGN KEY (id_payment) REFERENCES Payments(id_payment),
+    FOREIGN KEY (id_product) REFERENCES Products(id_product)
 );
 ```
 
-## orders Table
+## Orders Table
 
 ```sql
-CREATE TABLE encomendas (
-    id_encomenda VARCHAR(6) PRIMARY KEY,
-    id_fornecedor VARCHAR(6),
-    id_funcionario VARCHAR(6),
-    valor DECIMAL(10,2) NOT NULL,
-    moeda VARCHAR(3) NOT NULL CHECK (moeda IN ('EUR', 'USD', 'GBP')),
-    metodo_pagamento VARCHAR(20) NOT NULL CHECK (metodo_pagamento IN ('cartao', 'transferencia', 'dinheiro')),
-    estado_pagamento VARCHAR(20) NOT NULL CHECK (estado_pagamento IN ('pendente', 'concluido', 'cancelado')),
-    estado_encomenda VARCHAR(20) NOT NULL CHECK (estado_encomenda IN ('pendente', 'processando', 'enviado', 'entregue', 'cancelado')),
-    data_encomenda TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_modificacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_fornecedor) REFERENCES Fornecedores(id_fornecedor),
-    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+CREATE TABLE Orders (
+    id_order VARCHAR(6) PRIMARY KEY,
+    id_supplier VARCHAR(6),
+    id_employee VARCHAR(6),
+    amount DECIMAL(10,2) NOT NULL,
+    currency VARCHAR(3) NOT NULL CHECK (currency IN ('EUR', 'USD', 'GBP')),
+    payment_method VARCHAR(20) NOT NULL CHECK (payment_method IN ('card', 'transfer', 'cash')),
+    payment_status VARCHAR(20) NOT NULL CHECK (payment_status IN ('pending', 'completed', 'canceled')),
+    order_status VARCHAR(20) NOT NULL CHECK (order_status IN ('pending', 'processing', 'shipped', 'delivered', 'canceled')),
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_supplier) REFERENCES Suppliers(id_supplier),
+    FOREIGN KEY (id_employee) REFERENCES Employees(id_employee)
 );
 ```
 
-## item_order Table
+## Order_items Table
 
 ```sql
-CREATE TABLE encomendas_itens (
-    id_encomenda VARCHAR(6),
-    id_produto VARCHAR(6),
-    quantidade INTEGER NOT NULL CHECK (quantidade > 0),
-    valor_unitario DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id_encomenda, id_produto),
-    FOREIGN KEY (id_encomenda) REFERENCES encomendas(id_encomenda),
-    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+CREATE TABLE Order_Items (
+    id_order VARCHAR(6),
+    id_product VARCHAR(6),
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    unit_value DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_order, id_product),
+    FOREIGN KEY (id_order) REFERENCES Orders(id_order),
+    FOREIGN KEY (id_product) REFERENCES Products(id_product)
 );
 ```
