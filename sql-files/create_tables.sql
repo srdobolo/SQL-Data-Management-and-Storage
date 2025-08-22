@@ -1,8 +1,3 @@
-# 7. Relational Database
-
-## Clients Table
-
-```sql
 CREATE TABLE Clients (
     id_client VARCHAR(6) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -30,12 +25,8 @@ CREATE TABLE Clients (
     ),  
     modified_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-```
+    );
 
-## Products Table
-
-```sql
 CREATE TABLE Products (
     id_product VARCHAR(6) PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL,
@@ -52,11 +43,7 @@ CREATE TABLE Products (
 
 ALTER TABLE Products
 ADD COLUMN purchase_price DECIMAL(10,2); -- Adds purchase_price column. Stores the purchase cost of the product.
-```
 
-## Employees Table
-
-```sql
 CREATE TABLE Employees (
     id_employee VARCHAR(6) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -88,11 +75,7 @@ CREATE TABLE Employees (
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-## Suppliers Table
-
-```sql
 CREATE TABLE Suppliers (
     id_supplier VARCHAR(6) PRIMARY KEY,
     company_name VARCHAR(100) NOT NULL,
@@ -115,11 +98,7 @@ CREATE TABLE Suppliers (
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-## Reviews Table
-
-```sql
 CREATE TABLE Reviews (
     id_client VARCHAR(6) PRIMARY KEY,
     rating INTEGER CHECK (rating BETWEEN 1 AND 5),
@@ -128,11 +107,7 @@ CREATE TABLE Reviews (
     review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_client) REFERENCES Clients(id_client)
 );
-```
 
-## Events Table
-
-```sql
 CREATE TABLE Events (
     id_event      VARCHAR(6) PRIMARY KEY,
     name          VARCHAR(100) NOT NULL,
@@ -149,11 +124,7 @@ CREATE TABLE Events (
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-## Event_participations Table
-
-```sql
 CREATE TABLE Event_Participations (
     id_event   VARCHAR(6) NOT NULL,
     id_client  VARCHAR(6) NOT NULL,
@@ -162,11 +133,7 @@ CREATE TABLE Event_Participations (
     FOREIGN KEY (id_event) REFERENCES Events(id_event),
     FOREIGN KEY (id_client) REFERENCES Clients(id_client)
 );
-```
 
-## Payments Table
-
-```sql
 CREATE TABLE Payments (
     id_payment VARCHAR(6) PRIMARY KEY,
     id_client VARCHAR(6), 
@@ -185,11 +152,7 @@ CREATE TABLE Payments (
     FOREIGN KEY (id_client) REFERENCES Clients(id_client),
     FOREIGN KEY (id_employee) REFERENCES Employees(id_employee)
 );
-```
 
-## Payment_items Table
-
-```sql
 CREATE TABLE Payment_Items (
     id_payment VARCHAR(6),
     id_product VARCHAR(6),
@@ -199,11 +162,7 @@ CREATE TABLE Payment_Items (
     FOREIGN KEY (id_payment) REFERENCES Payments(id_payment),
     FOREIGN KEY (id_product) REFERENCES Products(id_product)
 );
-```
 
-## Orders Table
-
-```sql
 CREATE TABLE Orders (
     id_order VARCHAR(6) PRIMARY KEY,
     id_supplier VARCHAR(6),
@@ -218,11 +177,7 @@ CREATE TABLE Orders (
     FOREIGN KEY (id_supplier) REFERENCES Suppliers(id_supplier),
     FOREIGN KEY (id_employee) REFERENCES Employees(id_employee)
 );
-```
 
-## Order_items Table
-
-```sql
 CREATE TABLE Order_Items (
     id_order VARCHAR(6),
     id_product VARCHAR(6),
@@ -232,4 +187,3 @@ CREATE TABLE Order_Items (
     FOREIGN KEY (id_order) REFERENCES Orders(id_order),
     FOREIGN KEY (id_product) REFERENCES Products(id_product)
 );
-```
