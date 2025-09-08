@@ -1922,7 +1922,7 @@ SELECT
 FROM Produtos                  -- Origem: tabela de produtos
 WHERE preco_venda BETWEEN 2 AND 3  -- Apenas produtos cujo preço está entre 2 e 3 euros
 ORDER BY preco_venda DESC;     -- Ordena do preço mais alto para o mais baixo
-
+     
 ## 14. SQL Advanced Queries
 
 -- Seleciona os 10 clientes com maior número de compras (visitas)
