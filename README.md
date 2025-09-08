@@ -5,25 +5,28 @@
 ## 📑 Index
 
 - [1. Resume](#1-resume )
-- [2. Company Overview](#2-company-overview)
-- [3. Objectives](#3-objectives)
-- [4. Target Audience](#4-target-audience)
-- [5. Why an Information System (IS) Matters](#5-why-an-information-system-is-matters)
-- [6. Mission & Core Values](#6-mission--core-values)
-- [7. Team Structure & User Roles](#7-team-structure--user-roles)
-- [8. Requirements](#8-requirements)
-- [9. Entities and Atributes](docs/entities-atributes.md)
-- [10. Entities Relational Diagram](images/er-diagram.png)
-- [11. Relational Database](docs/relational-database.md)
-- [12. Data Seeding](docs/data-seeding.md)
-- [13. SQL Simple Queries](queries/simple-queries.md)
-- [14. SQL Advanced Queries](queries/advanced-querias.md)
+- [2. Improvements](#2-improvements)
+- [3. Company Overview](#3-company-overview)
+- [4. Objectives](#4-objectives)
+- [5. Target Audience](#5-target-audience)
+- [6. Why an Information System (IS) Matters](#6-why-an-information-system-is-matters)
+- [7. Mission & Core Values](#7-mission--core-values)
+- [8. Team Structure & User Roles](#8-team-structure--user-roles)
+- [9. Requirements](#9-requirements)
+- [10. Entities and Atributes with Data Types](#10-entities-and-atributes-with-data-types)
+- [11. Entities Relational Diagram](images/er-diagram.png)
+- [12. Relational Database](docs/relational-database.md)
+- [13. Data Seeding](docs/data-seeding.md)
+- [14. SQL Simple Queries](queries/simple-queries.md)
+- [15. SQL Advanced Queries](queries/advanced-querias.md)
 
 ---
 
 ## 1. Resume
 
-## 2. Company Overview
+## 2. Improvements
+
+## 3. Company Overview
 
 **Company Name:** *Malta Brew, Taproom*  
 
@@ -37,7 +40,7 @@
 
 ---
 
-## 3. Objectives
+## 4. Objectives
 
 Malta Brew, Taproom aims to evolve beyond a taproom into a vibrant cultural hub.  
 
@@ -49,13 +52,13 @@ Malta Brew, Taproom aims to evolve beyond a taproom into a vibrant cultural hub.
 
 ---
 
-## 4. Target Audience
+## 5. Target Audience
 
 The establishment welcomes individuals aged **18 and above**, of any nationality, who appreciate gastronomic and cultural experiences tied to craft beer.  
 
 ---
 
-## 5. Why an Information System (IS) Matters
+## 6. Why an Information System (IS) Matters
 
 An integrated Information System is essential for achieving operational excellence and strategic growth:  
 
@@ -68,7 +71,7 @@ An integrated Information System is essential for achieving operational excellen
 
 ---
 
-## 6. Mission & Core Values
+## 7. Mission & Core Values
 
 ### Mission
 
@@ -85,7 +88,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-## 7. Team Structure & User Roles
+## 8. Team Structure & User Roles
 
 ### Organizational Structure
 
@@ -103,9 +106,9 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 | Management | Internal, Full       | Control across clients, events, products, and operations       |
 | Employees  | Internal, Limited    | Access to clients, events, and products (day-to-day tasks)     |
 
-## 8. Requirements
+## 9. Requirements
 
-### 8.1 Functional Requirements
+### 9.1 Functional Requirements
 
 #### 👤 For the Customer
 
@@ -162,7 +165,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-### 8.2 Non-Functional Requirements
+### 9.2 Non-Functional Requirements
 
 - NFR01: **Security** – Sensitive data encryption, permission management, payment security.
 - NFR02: **Usability** – Intuitive interface, multilingual, accessible via app and kiosk.
@@ -173,7 +176,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-### 8.3 Technical Constraints
+### 9.3 Technical Constraints
 
 - TC01: Central database in **SQLite**.
 - TC02: Native integration with cashless terminals (own or via API).
@@ -182,7 +185,7 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-### 8.4 Reports & Audit
+### 9.4 Reports & Audit
 
 - RA01: Complete listings by period: sales, customers, products.
 - RA02: Real-time stock reports.
@@ -191,13 +194,13 @@ Deliver exceptional, discovery-rich experiences centered on Portuguese craft bee
 
 ---
 
-### 8.5 Special Rules & Notes
+### 9.5 Special Rules & Notes
 
 - SR01: Integrate general stock: consumption automatically reduces stock.
 - SR02: Independent modules with communication between areas (customers, suppliers, products, events).
 - SR03: Easy maintenance and future updates.
 
-## 9. System Entities and Data types
+## 10. Entities and Atributes with Data Types
 
 This document describes the main entities of the system and their respective attributes, based on the relational model in SQLite.
 
@@ -368,11 +371,11 @@ Order_items (
 );
 ```
 
-## 10. Entities Relational Diagram
+## 11. Entities Relational Diagram
 
 <img src="images\er-diagram.png">
 
-## 11. Relational Database
+## 12. Relational Database
 
 ### Clients Table
 
