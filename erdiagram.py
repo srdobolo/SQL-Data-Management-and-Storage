@@ -1,95 +1,101 @@
 from graphviz import Digraph
+import os
 
-# Criar diagrama ER
+# Create docs folder if not exists
+os.makedirs("docs", exist_ok=True)
+
 dot = Digraph("ERD_PortalEmprego", format="png")
-dot.attr(rankdir="LR", size="8")
+dot.attr(rankdir="TB", fontsize="12", fontname="Arial")
 
-# Definir estilo
-node_attr = {"shape": "record", "fontname": "Arial", "fontsize": "10"}
+# Helper: add table-style nodes with optional FK cardinalities
+def add_table(name, title, fields, color="lightgray"):
+    label = f'''<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD BGCOLOR="{color}" COLSPAN="2"><B>{title}</B></TD></TR>'''
+    for f in fields:
+        label += f'\n        <TR><TD ALIGN="LEFT">{f}</TD></TR>'
+    label += "\n    </TABLE>>"
+    dot.node(name, label=label, shape="none")
 
-# Tabelas principais
-dot.node("user_profiles", """{
-    user_profiles |
-    + id (PK) \\l
-    + email (UNIQUE) \\l
-    + nome_completo \\l
-    + perfil \\l
-    + telefone \\l
-    + criado_em \\l
-    + atualizado_em \\l
-}""", **node_attr)
+# Tables with FK cardinalities
+add_table("user_profiles", "user_profiles", [
+    "id (PK)",
+    "email (UNIQUE)",
+    "nome_completo",
+    "perfil",
+    "telefone",
+    "criado_em",
+    "atualizado_em"
+], color="lightblue")
 
-dot.node("candidate_profiles", """{
-    candidate_profiles |
-    + id (PK) \\l
-    + id_utilizador (FK) \\l
-    + curriculo_url \\l
-    + competencias \\l
-    + anos_experiencia \\l
-    + formacao \\l
-    + salario_min/max \\l
-    + localizacoes_preferidas \\l
-    + linkedin/github/portfolio \\l
-}""", **node_attr)
+add_table("candidate_profiles", "candidate_profiles", [
+    "id (PK)",
+    "id_utilizador (FK → user_profiles.id) 1:1",
+    "curriculo_url",
+    "competencias",
+    "anos_experiencia",
+    "formacao",
+    "salario_min/max",
+    "localizacoes_preferidas",
+    "linkedin/github/portfolio"
+], color="lightyellow")
 
-dot.node("company_profiles", """{
-    company_profiles |
-    + id (PK) \\l
-    + id_utilizador (FK) \\l
-    + nome_empresa \\l
-    + descricao_empresa \\l
-    + sector_atividade \\l
-    + dimensao_empresa \\l
-    + numero_contribuinte \\l
-    + morada/cidade/pais faturacao \\l
-    + stripe_customer_id \\l
-}""", **node_attr)
+add_table("company_profiles", "company_profiles", [
+    "id (PK)",
+    "id_utilizador (FK → user_profiles.id) 1:1",
+    "nome_empresa",
+    "descricao_empresa",
+    "sector_atividade",
+    "dimensao_empresa",
+    "numero_contribuinte",
+    "morada/cidade/pais faturacao",
+    "stripe_customer_id"
+], color="lightpink")
 
-dot.node("jobs", """{
-    jobs |
-    + id (PK) \\l
-    + id_empresa (FK) \\l
-    + titulo \\l
-    + descricao \\l
-    + salario_min/max \\l
-    + localizacao \\l
-    + tipo_contrato \\l
-    + estado \\l
-    + experiencia_requerida \\l
-    + categoria \\l
-}""", **node_attr)
+add_table("jobs", "jobs", [
+    "id (PK)",
+    "id_empresa (FK → company_profiles.id) 1:N",
+    "titulo",
+    "descricao",
+    "salario_min/max",
+    "localizacao",
+    "tipo_contrato",
+    "estado",
+    "experiencia_requerida",
+    "categoria"
+], color="lightgreen")
 
-dot.node("job_applications", """{
-    job_applications |
-    + id (PK) \\l
-    + id_oferta (FK) \\l
-    + id_candidato (FK) \\l
-    + carta_apresentacao_url \\l
-    + curriculo_url \\l
-    + estado \\l
-}""", **node_attr)
+add_table("job_applications", "job_applications", [
+    "id (PK)",
+    "id_oferta (FK → jobs.id) 1:N",
+    "id_candidato (FK → candidate_profiles.id) 1:N",
+    "carta_apresentacao_url",
+    "curriculo_url",
+    "estado"
+], color="orange")
 
-dot.node("payment_history", """{
-    payment_history |
-    + id (PK) \\l
-    + id_empresa (FK) \\l
-    + stripe_payment_intent_id \\l
-    + valor \\l
-    + moeda \\l
-    + estado \\l
-    + metodo_pagamento \\l
-    + iva_percentual \\l
-    + valor_com_iva \\l
-}""", **node_attr)
+add_table("payment_history", "payment_history", [
+    "id (PK)",
+    "id_empresa (FK → company_profiles.id) 1:N",
+    "stripe_payment_intent_id",
+    "valor",
+    "moeda",
+    "estado",
+    "metodo_pagamento",
+    "iva_percentual",
+    "valor_com_iva"
+], color="lightgray")
 
-# Relacionamentos
-dot.edge("user_profiles", "candidate_profiles", label="1 - n")
-dot.edge("user_profiles", "company_profiles", label="1 - n")
-dot.edge("company_profiles", "jobs", label="1 - n")
-dot.edge("jobs", "job_applications", label="1 - n")
-dot.edge("candidate_profiles", "job_applications", label="1 - n")
-dot.edge("company_profiles", "payment_history", label="1 - n")
+# Simple edge labels for readability (no crow foots)
+dot.edge("user_profiles", "candidate_profiles", label="1 → 1")
+dot.edge("user_profiles", "company_profiles", label="1 → 1")
+dot.edge("company_profiles", "jobs", label="1 → *")
+dot.edge("jobs", "job_applications", label="1 → *")
+dot.edge("candidate_profiles", "job_applications", label="1 → *")
+dot.edge("company_profiles", "payment_history", label="1 → *")
 
-# Exportar
-output_path = "/mnt/data/ERD_PortalEmprego.png"
+# Export
+output_path = "./images/ERD_PortalEmprego"
 dot.render(output_path, cleanup=True)
+
+print(f"ERD saved to {output_path}.png")
