@@ -1676,7 +1676,7 @@ INSERT INTO Order_Items (id_order, id_product, quantity, unit_value) VALUES (
 
 ## 13. SQL Simple Queries
 
-1. List all clients with no acquisition channel defined (NULL)
+### 1. List all clients with no acquisition channel defined (NULL)
 
 ```sql
 SELECT id_cliente, nome, canal_aquisicao
@@ -1684,7 +1684,7 @@ FROM Clientes
 WHERE canal_aquisicao IS NULL;
 ```
 
-2. List the 10 most recently created clients (descending by creation date)
+### 2. List the 10 most recently created clients (descending by creation date)
 
 ```sql
 SELECT id_cliente, nome, data_criacao
