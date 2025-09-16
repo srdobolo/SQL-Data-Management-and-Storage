@@ -2,10 +2,15 @@
 
 <img src="images/c7b24502-d400-4153-9ce7-eb6fc51b8de1.png" width="200px">
 
-## 📑 Index
+## 1. Resume
+
+Malta Brew, Taproom is a specialized retail establishment focused on Portuguese craft beers and complementary products. The company operates with a mission to become a national reference in the craft beer industry by offering not only high-quality products but also immersive cultural experiences related to beer. The taproom organizes thematic events, workshops, and launches to foster community engagement and customer loyalty.
+
+The integrated Information System for Malta Brew is designed to streamline operations, enhance customer experience, and support strategic growth. It covers diverse functionalities including customer management, product inventory, event registration, order and supply management, and seamless payment processing through cashless systems. The system is built on a scalable, secure SQLite database model tailored for multilingual support and real-time stock monitoring, enabling operational efficiency and compliance with legal standards such as GDPR.
+
+## 2. 📑 Index
 
 - [1. Resume](#1-resume )
-- [2. Improvements](#2-improvements)
 - [3. Company Overview](#3-company-overview)
 - [4. Objectives](#4-objectives)
 - [5. Target Audience](#5-target-audience)
@@ -21,14 +26,6 @@
 - [15. SQL Advanced Queries](#15-sql-advanced-queries)
 
 ---
-
-## 1. Resume
-
-Malta Brew, Taproom is a specialized retail establishment focused on Portuguese craft beers and complementary products. The company operates with a mission to become a national reference in the craft beer industry by offering not only high-quality products but also immersive cultural experiences related to beer. The taproom organizes thematic events, workshops, and launches to foster community engagement and customer loyalty.
-
-The integrated Information System for Malta Brew is designed to streamline operations, enhance customer experience, and support strategic growth. It covers diverse functionalities including customer management, product inventory, event registration, order and supply management, and seamless payment processing through cashless systems. The system is built on a scalable, secure SQLite database model tailored for multilingual support and real-time stock monitoring, enabling operational efficiency and compliance with legal standards such as GDPR.
-
-## 2. Improvements
 
 ## 3. Company Overview
 
