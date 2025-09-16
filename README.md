@@ -1679,216 +1679,216 @@ INSERT INTO Order_Items (id_order, id_product, quantity, unit_value) VALUES (
 ### 1. List all clients with no acquisition channel defined (NULL)
 
 ```sql
-SELECT id_cliente, nome, canal_aquisicao
-FROM Clientes
-WHERE canal_aquisicao IS NULL;
+SELECT id_client, name, acquisition_channel
+FROM Clients
+WHERE acquisition_channel IS NULL;
 ```
 
 ### 2. List the 10 most recently created clients (descending by creation date)
 
 ```sql
-SELECT id_cliente, nome, data_criacao
-FROM Clientes
-ORDER BY data_criacao DESC
+SELECT id_client, name, created_at
+FROM Clients
+ORDER BY created_at DESC
 LIMIT 10;
 ```
 
-3. Show all products whose name contains "Gold"
+### 3. Show all products whose name contains "Gold"
 
 ```sql
-SELECT id_produto, designacao
-FROM Produtos
-WHERE designacao LIKE '%Gold%';
+SELECT id_product, name
+FROM Products
+WHERE name LIKE '%Gold%';
 ```
 
-4. List beer products priced between 2.5 and 4.0 EUR
+### 4. List beer products priced between 2.5 and 4.0 EUR
 
 ```sql
-SELECT id_produto, designacao, preco_venda
-FROM Produtos
-WHERE tipo_de_produto = 'cerveja'
-    AND preco_venda BETWEEN 2.5 AND 4.0
-ORDER BY preco_venda ASC;
+SELECT id_product, name, sale_price
+FROM Products
+WHERE product_type = 'beer'
+  AND sale_price BETWEEN 2.5 AND 4.0
+ORDER BY sale_price ASC;
 ```
 
-5. Count of clients by acquisition channel
+### 5. Count of clients by acquisition channel
 
 ```sql
-SELECT canal_aquisicao, COUNT(*) AS total_clientes
-FROM Clientes
-GROUP BY canal_aquisicao
-ORDER BY total_clientes DESC;
+SELECT acquisition_channel, COUNT(*) AS total_clients
+FROM Clients
+GROUP BY acquisition_channel
+ORDER BY total_clients DESC;
 ```
 
-6. List clients whose name starts with "A"
+### 6. List clients whose name starts with "A"
 
 ```sql
-SELECT id_cliente, nome
-FROM Clientes
-WHERE nome LIKE 'A%';
+SELECT id_client, name
+FROM Clients
+WHERE name LIKE 'A%';
 ```
 
-7. Show suppliers with email ending in ".pt"
+### 7. Show suppliers with email ending in ".pt"
 
 ```sql
-SELECT id_fornecedor, nome_empresa
-FROM Fornecedores
+SELECT id_supplier, company_name
+FROM Suppliers
 WHERE email LIKE '%.pt';
 ```
 
-8. List orders pending payment (descending order date)
+### 8. List orders pending payment (descending order date)
 
 ```sql
-SELECT id_encomenda, id_fornecedor, estado_pagamento, data_encomenda
-FROM encomendas
-WHERE estado_pagamento = 'pendente'
-ORDER BY data_encomenda DESC;
+SELECT id_order, id_supplier, payment_status, order_date
+FROM Orders
+WHERE payment_status = 'pending'
+ORDER BY order_date DESC;
 ```
 
-9. Show clients subscribed to newsletter and who authorized GDPR
+### 9. Show clients subscribed to newsletter and who authorized GDPR
 
 ```sql
-SELECT id_cliente, nome
-FROM Clientes
-WHERE newsletter = 1 AND autorizacao = 1;
+SELECT id_client, name
+FROM Clients
+WHERE newsletter = 1 AND authorization = 1;
 ```
 
-10. List products with stock below minimum level
+### 10. List products with stock below minimum level
 
 ```sql
-SELECT id_produto, designacao, stock_atual, stock_minimo
-FROM Produtos
-WHERE stock_atual < stock_minimo;
+SELECT id_product, name, current_stock, minimum_stock
+FROM Products
+WHERE current_stock < minimum_stock;
 ```
 
-11. Distinct products of type "snacks"
+### 11. Distinct products of type "snacks"
 
 ```sql
-SELECT DISTINCT designacao, tipo_de_produto
-FROM Produtos
-WHERE tipo_de_produto = 'snacks';
+SELECT DISTINCT name, product_type
+FROM Products
+WHERE product_type = 'snacks';
 ```
 
-12. Show employees whose phone does NOT start with "91"
+### 12. Show employees whose phone does NOT start with "91"
 
 ```sql
-SELECT id_funcionario, nome, nr_telemovel
-FROM Funcionarios
-WHERE NOT nr_telemovel LIKE '91%';
+SELECT id_employee, name, phone_number
+FROM Employees
+WHERE NOT phone_number LIKE '91%';
 ```
 
 ### 13. Clients whose tax_id is between 100000000 and 200000000
 
 ```sql
-SELECT id_cliente, nome, nif
-FROM Clientes
-WHERE nif BETWEEN 100000000 AND 200000000;
+SELECT id_client, name, tax_id
+FROM Clients
+WHERE tax_id BETWEEN 100000000 AND 200000000;
 ```
 
-14. List all reviews with visibility set to FALSE
+### 14. List all reviews with visibility set to FALSE
 
 ```sql
-SELECT id_cliente, avaliacao, comentario
-FROM Avaliacao
-WHERE NOT visibilidade;
+SELECT id_review, id_client, rating, comment
+FROM Reviews
+WHERE visibility = 0;
 ```
 
-15. Products ordered by purchase price, ascending
+### 15. Products ordered by purchase price, ascending
 
 ```sql
-SELECT id_produto, designacao, preco_compra
-FROM Produtos
-ORDER BY preco_compra ASC;
+SELECT id_product, name, sale_price
+FROM Products
+ORDER BY sale_price ASC;
 ```
 
-16. Show orders with status "canceled" OR value above 25 EUR
+### 16. Show orders with status "canceled" OR value above 25 EUR
 
 ```sql
-SELECT id_encomenda, estado_encomenda, valor
-FROM encomendas
-WHERE estado_encomenda = 'cancelado' OR valor > 25;
+SELECT id_order, order_status, amount
+FROM Orders
+WHERE order_status = 'canceled' OR amount > 25;
 ```
 
-17. Count private and public events (grouped by privacy)
+### 17. Count private and public events (grouped by privacy)
 
 ```sql
-SELECT evento_privado, COUNT(*) AS total
-FROM Eventos
-GROUP BY evento_privado;
+SELECT private_event, COUNT(*) AS total
+FROM Events
+GROUP BY private_event;
 ```
 
-18. Show clients with no birth date (NULL)
+### 18. Show clients with no birth date (NULL)
 
 ```sql
-SELECT id_cliente, nome
-FROM Clientes
-WHERE data_nascimento IS NULL;
+SELECT id_client, name
+FROM Clients
+WHERE date_of_birth IS NULL;
 ```
 
-19. Distinct products with sale price above 4 EUR
+### 19. Distinct products with sale price above 4 EUR
 
 ```sql
-SELECT DISTINCT designacao, preco_venda
-FROM Produtos
-WHERE preco_venda > 4;
+SELECT DISTINCT name, sale_price
+FROM Products
+WHERE sale_price > 4;
 ```
 
-20. List clients whose email contains "gmail"
+### 20. List clients whose email contains "gmail"
 
 ```sql
-SELECT id_cliente, nome, email
-FROM Clientes
+SELECT id_client, name, email
+FROM Clients
 WHERE email LIKE '%gmail%';
 ```
 
-21. Orders from supplier "SnackMasters Portugal"
+### 21. Orders from supplier "SnackMasters Portugal"
 
 ```sql
-SELECT id_encomenda, valor
-FROM encomendas
-WHERE id_fornecedor = (SELECT id_fornecedor FROM Fornecedores WHERE nome_empresa LIKE '%SnackMasters Portugal%');
+SELECT id_order, amount
+FROM Orders
+WHERE id_supplier = (SELECT id_supplier FROM Suppliers WHERE company_name LIKE '%SnackMasters Portugal%');
 ```
 
-22. Clients ordered by modification date (ascending)
+### 22. Clients ordered by modification date (ascending)
 
 ```sql
-SELECT id_cliente, nome, data_modificacao
-FROM Clientes
-ORDER BY data_modificacao ASC;
+SELECT id_client, name, modified_at
+FROM Clients
+ORDER BY modified_at ASC;
 ```
 
-23. Product current stock grouped by type
+### 23. Product current stock grouped by type
 
 ```sql
-SELECT tipo_de_produto, SUM(stock_atual) AS stock_total
-FROM Produtos
-GROUP BY tipo_de_produto;
+SELECT product_type, SUM(current_stock) AS stock_total
+FROM Products
+GROUP BY product_type;
 ```
 
-24. Distinct payment currencies
+### 24. Distinct payment currencies
 
 ```sql
-SELECT DISTINCT moeda
-FROM Pagamentos;
+SELECT DISTINCT currency
+FROM Payments;
 ```
 
-25. Employees who are "segurança" OR born before 1985
+### 25. Employees who are "segurança" OR born before 1985
 
 ```sql
-SELECT id_funcionario, nome, funcao, data_nascimento
-FROM Funcionarios
-WHERE funcao = 'segurança' OR (data_nascimento IS NOT NULL AND data_nascimento < '1985-01-01');
+SELECT id_employee, name, role, date_of_birth
+FROM Employees
+WHERE role = 'segurança' OR (date_of_birth IS NOT NULL AND date_of_birth < '1985-01-01');
 ```
 
-26. Products whose sale price is NOT between 2 and 4 EUR
+### 26. Products whose sale price is NOT between 2 and 4 EUR
 
 ```sql
-SELECT id_produto, designacao, preco_venda
-FROM Produtos
-WHERE NOT (preco_venda BETWEEN 2 AND 4);
+SELECT id_client, rating, comment
+FROM Reviews
+WHERE rating = 5 AND visibility = 1;
 ```
 
-27. Reviews with maximum rating (5) and visible
+### 27. Reviews with maximum rating (5) and visible
 
 ```sql
 SELECT id_cliente, avaliacao, comentario
@@ -1896,198 +1896,236 @@ FROM Avaliacao
 WHERE avaliacao = 5 AND visibilidade;
 ```
 
-28. Completed payments ordered by value, descending
+### 28. Completed payments ordered by value, descending
 
 ```sql
-SELECT id_pagamento, valor, estado_pagamento
-FROM Pagamentos
-WHERE estado_pagamento = 'concluido'
-ORDER BY valor DESC;
+SELECT id_payment, amount, payment_status
+FROM Payments
+WHERE payment_status = 'completed'
+ORDER BY amount DESC;
 ```
 
-29. Show number of participations in each event
+### 29. Show number of participations in each event
 
 ```sql
-SELECT id_evento, COUNT(*) AS total_participantes
-FROM Participacoes_Evento
-GROUP BY id_evento
-ORDER BY total_participantes DESC;
+SELECT id_event, COUNT(*) AS total_participants
+FROM Event_Participations
+GROUP BY id_event
+ORDER BY total_participants DESC;
 ```
 
--- 30. Listar produtos com designações diferentes e ordenar de Z-A
-SELECT DISTINCT designacao
-FROM Produtos
-ORDER BY designacao DESC;
+### 30. List products with distinct names ordered Z–A
 
+```sql
+SELECT DISTINCT name
+FROM Products
+ORDER BY name DESC;
+```
 
-SELECT
-    id_produto,
-    designacao,
-    stock_atual
-FROM
-    Produtos
-WHERE
-    tipo_de_produto = 'snacks'
-    AND stock_atual < 20;
+### 31. Snacks with stock below 20 units
 
-SELECT
-    id_produto,
-    designacao,
-    preco_venda,
-    preco_compra,
-    (preco_venda - preco_compra) AS margem
-FROM
-    Produtos
-WHERE
-    preco_compra IS NOT NULL
-ORDER BY
-    margem DESC
+```sql
+SELECT id_product, name, current_stock
+FROM Products
+WHERE product_type = 'snacks' AND current_stock < 20;
+```
+
+### 32. Top 10 products buy-sell margin (absolute value)
+
+```sql
+SELECT id_product, name, sale_price, purchase_price, (sale_price - purchase_price) AS margin
+FROM Products
+WHERE purchase_price IS NOT NULL
+ORDER BY margin DESC
 LIMIT 10;
+```
 
-SELECT f.id_funcionario, f.nome
-FROM Funcionarios f
-LEFT JOIN Pagamentos p ON f.id_funcionario = p.id_funcionario
-WHERE p.id_pagamento IS NULL;
+### 33. Employees with NO payment records
 
-SELECT id_pagamento, id_cliente, valor
-FROM Pagamentos
-WHERE moeda = 'EUR' AND valor > 20;
+```sql
+SELECT e.id_employee, e.name
+FROM Employees e
+LEFT JOIN Payments p ON e.id_employee = p.id_employee
+WHERE p.id_payment IS NULL;
+```
 
-SELECT id_produto, designacao,
-       preco_venda, preco_compra,
-       ROUND(((preco_venda - preco_compra) / preco_compra)*100, 2) AS margem_percentual
-FROM Produtos
-WHERE preco_compra IS NOT NULL
-ORDER BY margem_percentual DESC
+### 34. Payments in EUR and above 20 EUR
+
+```sql
+SELECT id_payment, id_client, amount
+FROM Payments
+WHERE currency = 'EUR' AND amount > 20;
+```
+
+### 35. Top 10 products by margin percentage
+
+```sql
+SELECT id_product, name, sale_price, purchase_price,
+       ROUND(((sale_price - purchase_price) / purchase_price)*100, 2) AS margin_percent
+FROM Products
+WHERE purchase_price IS NOT NULL
+ORDER BY margin_percent DESC
 LIMIT 10;
+```
 
-SELECT id_produto, designacao, preco_venda, stock_atual, stock_minimo
-FROM Produtos
-WHERE preco_venda > 2 AND stock_atual < stock_minimo;
+### 36. Products above €2 and with stock below minimum
 
-SELECT id_fornecedor, nome_empresa, pais
-FROM Fornecedores
-WHERE NOT pais = 'Portugal';
+```sql
+SELECT id_product, name, sale_price, current_stock, minimum_stock
+FROM Products
+WHERE sale_price > 2 AND current_stock < minimum_stock;
+```
 
-SELECT id_evento, designacao, capacidade
-FROM Eventos
-WHERE capacidade BETWEEN 50 AND 100;
+### 37. Suppliers outside Portugal
 
-SELECT id_pagamento, valor, estado_pagamento
-FROM Pagamentos
-WHERE estado_pagamento IS 'pendente';
+```sql
+SELECT id_supplier, company_name, country
+FROM Suppliers
+WHERE country <> 'Portugal';
+```
 
-SELECT DISTINCT canal_aquisicao
-FROM Clientes;
+### 38. Events with capacity between 50 and 100
 
-SELECT
-    moeda,                     -- Tipo de moeda usada no pagamento
-    COUNT(*) AS total_pagamentos -- Contagem de pagamentos por moeda
-FROM Pagamentos                -- Origem dos dados
-GROUP BY moeda                 -- Agrupa por moeda
-HAVING COUNT(*) < 5;           -- Filtra apenas moedas com menos de 5 pagamentos
+```sql
+SELECT id_event, name, capacity
+FROM Events
+WHERE capacity BETWEEN 50 AND 100;
+```
 
--- Listar fornecedores cujo nome inclua a palavra "brew", sem diferenciar maiúsculas de minúsculas
-SELECT
-    id_fornecedor,        -- ID do fornecedor
-    nome_empresa          -- Nome da empresa fornecedora
-FROM Fornecedores         -- Origem dos fornecedores
-WHERE nome_empresa ILIKE '%brew%'; -- Pesquisa sem considerar maiúsculas/minúsculas
+### 39. Payments with status "pending"
 
--- Lista os clientes que fizeram mais do que 3 compras concluídas e quanto gastaram no total
-SELECT
-    id_cliente,                                   -- ID do cliente
-    COUNT(*) AS total_compras,                    -- Nº total de compras
-    ROUND(SUM(valor), 2) AS total_gasto           -- Soma do valor total gasto
-FROM Pagamentos
-WHERE estado_pagamento = 'concluido'              -- Apenas compras concluídas
-GROUP BY id_cliente                               -- Agrupar por cliente
-HAVING COUNT(*) > 1                               -- Apenas quem comprou mais de 1 vez
-ORDER BY total_compras DESC;                      -- Ordenar por quem mais comprou
+```sql
+SELECT id_payment, amount, payment_status
+FROM Payments
+WHERE payment_status = 'pending';
+```
 
--- Lista os produtos com preço de venda entre 5€ e 15€, ordenados do mais caro para o mais barato
-SELECT
-    id_produto,                -- ID do produto
-    designacao,                -- Nome/designação do produto
-    preco_venda                -- Preço de venda do produto
-FROM Produtos                  -- Origem: tabela de produtos
-WHERE preco_venda BETWEEN 2 AND 3  -- Apenas produtos cujo preço está entre 2 e 3 euros
-ORDER BY preco_venda DESC;     -- Ordena do preço mais alto para o mais baixo
+### 40. Distinct acquisition channels
+
+```sql
+SELECT DISTINCT acquisition_channel
+FROM Clients;
+```
+
+### 41. Currencies with fewer than 5 payments
+
+```sql
+SELECT currency, COUNT(*) AS total_payments
+FROM Payments
+GROUP BY currency
+HAVING COUNT(*) < 5;
+```
+
+### 42. Suppliers whose name includes "brew", case-insensitive
+
+```sql
+SELECT id_supplier, company_name
+FROM Suppliers
+WHERE LOWER(company_name) LIKE '%brew%';
+```
+
+### 43. Clients with more than 1 completed purchase and total spent
+
+```sql
+SELECT id_client, COUNT(*) AS total_purchases, ROUND(SUM(amount), 2) AS total_spent
+FROM Payments
+WHERE payment_status = 'completed'
+GROUP BY id_client
+HAVING COUNT(*) > 1
+ORDER BY total_purchases DESC;
+```
+
+### 44. Products price between 2 and 3 EUR, ordered descending
+
+```sql
+SELECT id_product, name, sale_price
+FROM Products
+WHERE sale_price BETWEEN 2 AND 3
+ORDER BY sale_price DESC;
+```
 
 ## 14. SQL Advanced Queries
 
--- Seleciona os 10 clientes com maior número de compras (visitas)
-SELECT
-    c.id_cliente,                  -- ID do cliente
-    c.nome,                        -- Nome do cliente
-    COUNT(p.id_pagamento) AS frequencia_visitas -- Conta o nº total de pagamentos realizados
-    -- pelo cliente
-FROM Clientes c                  -- Tabela principal: lista de todos os clientes
-LEFT JOIN Pagamentos p              -- Junta com pagamentos (LEFT JOIN para incluir clientes
--- sem compras)
-       ON c.id_cliente = p.id_cliente -- Relaciona clientes com pagamentos pelo id_cliente
-GROUP BY c.id_cliente, c.nome       -- Agrupa por cliente para contar o total de compras
-ORDER BY frequencia_visitas DESC    -- Ordena dos clientes mais frequentes para os menos
-LIMIT 10;                           -- Mostra apenas os 10 primeiros resultados
+### 1. Top 10 clients by number of purchases (visits)
 
--- Seleciona os 10 clientes que mais compram em média (em unidades de produto por compra)
+```sql
 SELECT
-    c.id_cliente,                   -- ID do cliente
-    c.nome,                         -- Nome do cliente
-    ROUND(AVG(qtd_por_compra), 2) AS volume_medio_consumo -- Média de unidades por compra
-    -- (arredondado a 2 casas decimais)
+    c.id_client,                                -- Client ID
+    c.name,                                     -- Client Name
+    COUNT(p.id_payment) AS visit_count          -- Total payment count (visits)
+FROM Clients c
+LEFT JOIN Payments p
+    ON c.id_client = p.id_client                -- Relate clients to payments
+GROUP BY c.id_client, c.name
+ORDER BY visit_count DESC
+LIMIT 10;
+```
+
+### 2. Top 10 clients by average units per purchase
+
+```sql
+SELECT
+    c.id_client,                                -- Client ID
+    c.name,                                     -- Client Name
+    ROUND(AVG(units_per_order), 2) AS avg_units_per_order   -- Average products per order
 FROM (
-    -- Subconsulta para calcular a quantidade total de produtos por compra
     SELECT
-        p.id_cliente,               -- ID do cliente
-        SUM(ip.quantidade) AS qtd_por_compra -- Soma da quantidade de produtos comprados
-        -- nessa compra
-    FROM Pagamentos p
-    JOIN Itens_Pagamento ip
-         ON p.id_pagamento = ip.id_pagamento -- Liga pagamento com os seus itens
-    GROUP BY p.id_pagamento, p.id_cliente -- Agrupa por compra para calcular total de unidades
-    -- por transação
+        p.id_client,                            -- Client ID
+        SUM(pi.quantity) AS units_per_order     -- Total products in each payment
+    FROM Payments p
+    JOIN Payment_Items pi
+        ON p.id_payment = pi.id_payment         -- Relate payments to their items
+    GROUP BY p.id_payment, p.id_client
 ) sub
-JOIN Clientes c ON c.id_cliente = sub.id_cliente -- Junta com a tabela de clientes para trazer
--- os nomes
-GROUP BY c.id_cliente, c.nome        -- Agrupa novamente para calcular a média por cliente
-ORDER BY volume_medio_consumo DESC   -- Ordena dos que mais consomem para menos
-LIMIT 10;                            -- Mostra apenas os 10 primeiros resultados
+JOIN Clients c ON c.id_client = sub.id_client
+GROUP BY c.id_client, c.name
+ORDER BY avg_units_per_order DESC
+LIMIT 10;
+```
 
--- Seleciona os 10 clientes cuja última compra foi mais recente
-SELECT
-    c.id_cliente,                    -- ID do cliente
-    c.nome,                          -- Nome do cliente
-    MAX(p.data_pagamento) AS ultima_compra -- Obtém a data mais recente de pagamento
-FROM Clientes c
-LEFT JOIN Pagamentos p
-       ON c.id_cliente = p.id_cliente -- Liga com a tabela de pagamentos
-GROUP BY c.id_cliente, c.nome        -- Agrupa por cliente
-ORDER BY ultima_compra DESC          -- Ordena da compra mais recente para a mais antiga
-LIMIT 10;                            -- Mostra apenas os 10 primeiros resultados
+### 3. Top 10 clients whose last purchase was most recent
 
--- Seleciona os 10 clientes que mais gastaram no total (€)
+```sql
 SELECT
-    c.id_cliente,                     -- ID do cliente
-    c.nome,                           -- Nome do cliente
-    ROUND(SUM(p.valor), 2) AS total_gasto -- Soma do valor total gasto (apenas compras concluídas)
-FROM Clientes c
-LEFT JOIN Pagamentos p
-       ON c.id_cliente = p.id_cliente
-       AND p.estado_pagamento = 'concluido' -- Filtra apenas pagamentos concluídos
-GROUP BY c.id_cliente, c.nome         -- Agrupa por cliente
-ORDER BY total_gasto DESC             -- Ordena do maior para o menor gasto
-LIMIT 10;                             -- Mostra apenas os 10 primeiros resultados
+    c.id_client,                                -- Client ID
+    c.name,                                     -- Client Name
+    MAX(p.payment_date) AS last_purchase        -- Most recent payment date
+FROM Clients c
+LEFT JOIN Payments p
+    ON c.id_client = p.id_client
+GROUP BY c.id_client, c.name
+ORDER BY last_purchase DESC
+LIMIT 10;
+```
 
--- Seleciona os 10 clientes com maior ticket médio por compra
+### 4. Top 10 clients by total amount spent (€)
+
+```sql
 SELECT
-    c.id_cliente,                      -- ID do cliente
-    c.nome,                            -- Nome do cliente
-    ROUND(AVG(p.valor), 2) AS media_consumo_compra -- Calcula o valor médio gasto por compra
-FROM Clientes c
-LEFT JOIN Pagamentos p
-       ON c.id_cliente = p.id_cliente
-       AND p.estado_pagamento = 'concluido' -- Apenas compras concluídas
-GROUP BY c.id_cliente, c.nome          -- Agrupa por cliente
-ORDER BY media_consumo_compra DESC     -- Ordena do maior valor médio para o menor
-LIMIT 10;                              -- Mostra apenas os 10 primeiros resultados
+    c.id_client,                                -- Client ID
+    c.name,                                     -- Client Name
+    ROUND(SUM(p.amount), 2) AS total_spent      -- Total spent (only completed purchases)
+FROM Clients c
+LEFT JOIN Payments p
+    ON c.id_client = p.id_client
+    AND p.payment_status = 'completed'
+GROUP BY c.id_client, c.name
+ORDER BY total_spent DESC
+LIMIT 10;
+```
+
+### 5. Top 10 clients by average ticket amount per purchase
+
+```sql
+SELECT
+    c.id_client,                                -- Client ID
+    c.name,                                     -- Client Name
+    ROUND(AVG(p.amount), 2) AS avg_ticket       -- Average spent per completed purchase
+FROM Clients c
+LEFT JOIN Payments p
+    ON c.id_client = p.id_client
+    AND p.payment_status = 'completed'
+GROUP BY c.id_client, c.name
+ORDER BY avg_ticket DESC
+LIMIT 10;
+```
