@@ -1777,96 +1777,148 @@ FROM Funcionarios
 WHERE NOT nr_telemovel LIKE '91%';
 ```
 
--- 13. Clientes cujo NIF está entre 100000000 e 200000000 (BETWEEN)
+### 13. Clients whose tax_id is between 100000000 and 200000000
+
+```sql
 SELECT id_cliente, nome, nif
 FROM Clientes
 WHERE nif BETWEEN 100000000 AND 200000000;
+```
 
--- 14. Listar todas as avaliações com NOT visibilidade
+14. List all reviews with visibility set to FALSE
+
+```sql
 SELECT id_cliente, avaliacao, comentario
 FROM Avaliacao
 WHERE NOT visibilidade;
+```
 
--- 15. Produtos ordenados por preço de compra, de forma ascendente
+15. Products ordered by purchase price, ascending
+
+```sql
 SELECT id_produto, designacao, preco_compra
 FROM Produtos
 ORDER BY preco_compra ASC;
+```
 
--- 16. Mostrar encomendas com estado "cancelado" OU valor superior a 25 EUR
+16. Show orders with status "canceled" OR value above 25 EUR
+
+```sql
 SELECT id_encomenda, estado_encomenda, valor
 FROM encomendas
 WHERE estado_encomenda = 'cancelado' OR valor > 25;
+```
 
--- 17. Listar eventos privados e públicos (GROUP BY tipo evento)
+17. Count private and public events (grouped by privacy)
+
+```sql
 SELECT evento_privado, COUNT(*) AS total
 FROM Eventos
 GROUP BY evento_privado;
+```
 
--- 18. Mostrar clientes sem data de nascimento (IS NULL)
+18. Show clients with no birth date (NULL)
+
+```sql
 SELECT id_cliente, nome
 FROM Clientes
 WHERE data_nascimento IS NULL;
+```
 
--- 19. Produtos com designação distinta e preço superior a 4 EUR
+19. Distinct products with sale price above 4 EUR
+
+```sql
 SELECT DISTINCT designacao, preco_venda
 FROM Produtos
 WHERE preco_venda > 4;
+```
 
--- 20. Listar clientes cujo email contém "gmail"
+20. List clients whose email contains "gmail"
+
+```sql
 SELECT id_cliente, nome, email
 FROM Clientes
 WHERE email LIKE '%gmail%';
+```
 
--- 21. Encomendas do fornecedor “SnackMasters Portugal”
+21. Orders from supplier "SnackMasters Portugal"
+
+```sql
 SELECT id_encomenda, valor
 FROM encomendas
 WHERE id_fornecedor = (SELECT id_fornecedor FROM Fornecedores WHERE nome_empresa LIKE '%SnackMasters Portugal%');
+```
 
--- 22. Clientes ordenados por data de modificação (ASC)
+22. Clients ordered by modification date (ascending)
+
+```sql
 SELECT id_cliente, nome, data_modificacao
 FROM Clientes
 ORDER BY data_modificacao ASC;
+```
 
--- 23. Produtos e stock atual, agrupados por tipo
+23. Product current stock grouped by type
+
+```sql
 SELECT tipo_de_produto, SUM(stock_atual) AS stock_total
 FROM Produtos
 GROUP BY tipo_de_produto;
+```
 
--- 24. Pagamentos com moeda distinta (DISTINCT)
+24. Distinct payment currencies
+
+```sql
 SELECT DISTINCT moeda
 FROM Pagamentos;
+```
 
--- 25. Funcionários que são “segurança” OU nasceram antes de 1985
+25. Employees who are "segurança" OR born before 1985
+
+```sql
 SELECT id_funcionario, nome, funcao, data_nascimento
 FROM Funcionarios
 WHERE funcao = 'segurança' OR (data_nascimento IS NOT NULL AND data_nascimento < '1985-01-01');
+```
 
--- 26. Produtos cujo preço de venda NÃO está entre 2 e 4 EUR
+26. Products whose sale price is NOT between 2 and 4 EUR
+
+```sql
 SELECT id_produto, designacao, preco_venda
 FROM Produtos
 WHERE NOT (preco_venda BETWEEN 2 AND 4);
+```
 
--- 27. Avaliação dos clientes com nota máxima (5) e visíveis
+27. Reviews with maximum rating (5) and visible
+
+```sql
 SELECT id_cliente, avaliacao, comentario
 FROM Avaliacao
 WHERE avaliacao = 5 AND visibilidade;
+```
 
--- 28. Pagamentos concluidos ordenados por valor, desc.
+28. Completed payments ordered by value, descending
+
+```sql
 SELECT id_pagamento, valor, estado_pagamento
 FROM Pagamentos
 WHERE estado_pagamento = 'concluido'
 ORDER BY valor DESC;
+```
 
--- 29. Mostrar quantidade de participações em cada evento
+29. Show number of participations in each event
+
+```sql
 SELECT id_evento, COUNT(*) AS total_participantes
 FROM Participacoes_Evento
 GROUP BY id_evento
 ORDER BY total_participantes DESC;
+```
 
 -- 30. Listar produtos com designações diferentes e ordenar de Z-A
 SELECT DISTINCT designacao
 FROM Produtos
 ORDER BY designacao DESC;
+
 
 SELECT
     id_produto,
