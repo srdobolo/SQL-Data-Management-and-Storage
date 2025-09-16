@@ -374,7 +374,7 @@ Order_items (
 
 ## 11. Entities Relational Diagram
 
-<img src="images\er-diagram.png">
+<img src="images\ERD_ClientProduct.png">
 
 ## 12. Relational Database
 
