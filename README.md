@@ -15,10 +15,10 @@
 - [9. Requirements](#9-requirements)
 - [10. Entities and Atributes with Data Types](#10-entities-and-atributes-with-data-types)
 - [11. Entities Relational Diagram](#11-entities-relational-diagram)
-- [12. Relational Database](12#)
-- [13. Data Seeding](docs/data-seeding.md)
-- [14. SQL Simple Queries](queries/simple-queries.md)
-- [15. SQL Advanced Queries](queries/advanced-querias.md)
+- [12. Relational Database](#12-relational-database)
+- [13. Data Seeding](#13-data-seeding)
+- [14. SQL Simple Queries](#14-sql-simple-queries)
+- [15. SQL Advanced Queries](#15-sql-advanced-queries)
 
 ---
 
@@ -611,7 +611,7 @@ CREATE TABLE Order_Items (
 );
 ```
 
-## 12. Data Seeding
+## 13. Data Seeding
 
 ### Clients
 
@@ -1674,7 +1674,7 @@ INSERT INTO Order_Items (id_order, id_product, quantity, unit_value) VALUES (
 ( 'E00035', 'P00014', 1, (SELECT purchase_price FROM Products WHERE id_product = 'P00014'));
 ```
 
-## 13. SQL Simple Queries
+## 14. SQL Simple Queries
 
 ### 1. List all clients with no acquisition channel defined (NULL)
 
@@ -2044,7 +2044,7 @@ WHERE sale_price BETWEEN 2 AND 3
 ORDER BY sale_price DESC;
 ```
 
-## 14. SQL Advanced Queries
+## 15. SQL Advanced Queries
 
 ### 1. Top 10 clients by number of purchases (visits)
 
