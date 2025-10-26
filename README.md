@@ -1,7 +1,5 @@
 # 🍺 Malta Brew, Taproom Information System
 
-<img src="images/c7b24502-d400-4153-9ce7-eb6fc51b8de1.png" width="200px">
-
 ## 1. Resume
 
 Developed a comprehensive SQL-based data management and storage system focused on performance, scalability, and data integrity. The project demonstrates advanced database design and implementation skills, as well as a strong understanding of relational data architecture.
@@ -36,6 +34,8 @@ This project highlights expertise in SQL, database architecture, data modeling, 
 ---
 
 ## 3. Company Overview
+
+<img src="images/c7b24502-d400-4153-9ce7-eb6fc51b8de1.png" width="200px">
 
 **Company Name:** *Malta Brew, Taproom*  
 
