@@ -4,9 +4,17 @@
 
 ## 1. Resume
 
-Malta Brew, Taproom is a specialized retail establishment focused on Portuguese craft beers and complementary products. The company operates with a mission to become a national reference in the craft beer industry by offering not only high-quality products but also immersive cultural experiences related to beer. The taproom organizes thematic events, workshops, and launches to foster community engagement and customer loyalty.
+Developed a comprehensive SQL-based data management and storage system focused on performance, scalability, and data integrity. The project demonstrates advanced database design and implementation skills, as well as a strong understanding of relational data architecture.
 
-The integrated Information System for Malta Brew is designed to streamline operations, enhance customer experience, and support strategic growth. It covers diverse functionalities including customer management, product inventory, event registration, order and supply management, and seamless payment processing through cashless systems. The system is built on a scalable, secure SQLite database model tailored for multilingual support and real-time stock monitoring, enabling operational efficiency and compliance with legal standards such as GDPR.
+### Key Contributions & Responsibilities:
+
+- Database Design: Built a fully normalized relational schema defining tables, relationships, constraints, and indexes to ensure data consistency and optimized query performance.
+- SQL Development: Wrote complex SQL queries, stored procedures, views, and triggers to automate data processing and streamline data manipulation workflows.
+- Data Integrity & Security: Implemented referential integrity constraints and role-based access control to ensure reliable and secure data management.
+- Performance Optimization: Applied query optimization techniques and indexing strategies to improve execution efficiency and scalability.
+- Documentation & Deployment: Created initialization scripts, data dictionaries, and technical documentation to support environment setup and long-term maintainability.
+
+This project highlights expertise in SQL, database architecture, data modeling, and performance optimization, showcasing the ability to design and implement robust backend data systems from the ground up.
 
 ## 2. 📑 Index
 
